@@ -1,13 +1,28 @@
 ---
 name: skill-hunter
-description: Use when asked to analyze a project/codebase to recommend a skill stack, search skill registries (context7.com skills, skills.sh), compare or de-duplicate skills, or install project-level skills based on repo context and user goals.
+description: Use when asked to analyze a project/codebase to recommend a skill stack, evaluate or de-duplicate skills, or install project-level skills based on repo context and user goals.
+license: MIT
+compatibility: Requires web access to skills registries and repo read access; install targets vary by agent (Codex .codex/skills, Claude upload).
+metadata:
+  author: CE0Alex
+  version: "1.0.1"
+  short-description: Analyze a repo and recommend or install a best-fit skill stack.
+  argument-hint: <repo-root|path|url>
 ---
 
 # Skill Hunter
 
 ## Overview
 
-Analyze the project and user goals to build a justified, minimal skill stack. Prefer official/trusted sources, verify each candidate by inspection, and install only after user confirmation using agent-specific locations.
+Analyze the repo and user goals to assemble a minimal, justified skill stack. Prefer official sources, inspect every candidate, and install only after user confirmation using agent-specific locations.
+
+## Inputs
+
+- Project root or repo URL
+- Target agent (Codex, Claude/Claude Code, or other)
+- Goals and priority tasks
+- Trust policy (official-only vs allow community)
+- Constraints: network, tools, compliance, time
 
 ## Workflow
 
@@ -19,35 +34,41 @@ Analyze the project and user goals to build a justified, minimal skill stack. Pr
 - Summarize: domain, stack, critical workflows, tools, constraints, and risks.
 
 ### 2) Ask clarifying questions
-- Ask only what’s needed to remove ambiguity: goals, priorities, timelines, environments, compliance, risk tolerance, and “must-have” workflows.
+- Ask only what is needed to remove ambiguity: goals, priorities, timelines, environments, compliance, risk tolerance, and must-have workflows.
 - If user intent is already clear, proceed without extra questions.
 
 ### 3) Discover candidate skills (evidence-based)
-- Use `web.run` to search **context7.com (skills tab)** and **skills.sh**.
+- Use `web.run` to search context7.com (skills tab) and skills.sh.
 - Prefer official/trusted sources: skills created/maintained by the tool or company that owns the tech in the codebase.
-- For each candidate, **inspect the skill contents** (open `SKILL.md` or official docs). Do not assume based on name alone.
+- If a registry is unavailable, say so and fall back to GitHub search or the vendor's official docs.
 
-### 4) Evaluate quality and overlap
-- Note maintenance signals: recent activity, releases, issue health, community adoption.
-- If a skill is not well established, **call that out clearly** and offer it only as an optional, non-recommended candidate.
-- Map capabilities to project needs; avoid overlapping or redundant skills unless explicitly required.
+### 4) Inspect each candidate (no assumptions)
+Inspection checklist:
+- Open SKILL.md and read frontmatter and body.
+- Verify maintainer, license, and install method.
+- Scan scripts/references for required tools and dependencies.
+- Check activity signals (recent commits/releases, issues health).
+- Confirm compatibility with the target agent.
 
-### 5) Propose a stack (or variants)
-- Present a **primary stack** when there is a clear best choice.
-- If not, present 2–3 **stack variations** with tradeoffs (coverage vs. risk vs. maintenance).
-- For each skill, include: purpose, source, trust level, and overlap notes.
+### 5) Evaluate quality and overlap
+- Rate trust tier: Official / Maintained / Community.
+- Create a capability matrix to avoid duplicate coverage.
+- If a skill is not well established, label it as optional and do not recommend it by default.
 
-### 6) Confirm agent + install (agent-aware)
-- Ask the user to confirm the chosen stack **before installing**.
-- Determine the target agent (Codex, Claude/Claude Code, or other). If unclear, ask.
+### 6) Recommend a stack (or variants)
+- Provide a primary stack when there is a clear best choice.
+- If not, provide 2-3 variants with tradeoffs (coverage vs risk vs maintenance).
+- For each skill, include purpose, source, trust tier, and overlap notes.
+
+### 7) Confirm and install (agent-aware)
+- Ask the user to confirm the chosen stack before installing.
 
 **Codex**
 - Install to `<repo>/.codex/skills/<skill-name>` by default.
-- If user wants a narrower scope, install to `.codex/skills` in the current folder or a parent folder.
 - If a skill is hosted on GitHub, use the installer with a project-level destination:
   - `python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py --repo owner/repo --path path/to/skill --dest ./.codex/skills`
   - Or: `--url https://github.com/owner/repo/tree/<ref>/path/to/skill`
-- If not on GitHub, follow official install instructions and place the skill folder under `./.codex/skills/<skill-name>`.
+- If not on GitHub, follow official install instructions and place the skill under `./.codex/skills/`.
 
 **Claude / Claude Code**
 - Claude uses uploaded skills (ZIP) via Settings > Capabilities.
@@ -55,11 +76,12 @@ Analyze the project and user goals to build a justified, minimal skill stack. Pr
 
 **Other clients**
 - Ask for the official project-level skills path or CLI for that client.
-- If docs exist, follow their official install method; otherwise, present a best-effort option and mark it as unverified.
+- If no official guidance exists, present a best-effort option and mark it as unverified.
 
 ## Output format (concise)
-- **Project dossier:** stack, goals, constraints, key workflows
-- **Candidate skills:** source + trust level + inspection notes
-- **Overlap analysis:** what each skill covers and conflicts
-- **Recommendation:** primary stack + optional variants
-- **Next step:** confirm to install into `./skills`
+
+- Project dossier: stack, goals, constraints, key workflows
+- Candidate skills: source + trust tier + inspection notes
+- Overlap analysis: what each skill covers and conflicts
+- Recommendation: primary stack + optional variants
+- Next step: confirm install target
