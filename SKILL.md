@@ -2,10 +2,9 @@
 name: skill-hunter
 description: Use when asked to analyze a project/codebase to recommend a skill stack, evaluate or de-duplicate skills, or install project-level skills based on repo context and user goals.
 license: MIT
-compatibility: Requires web access to skills registries and repo read access; install targets vary by agent (Codex .codex/skills, Claude upload).
 metadata:
   author: CE0Alex
-  version: "1.0.1"
+  version: "1.0.2"
   short-description: Analyze a repo and recommend or install a best-fit skill stack.
   argument-hint: <repo-root|path|url>
 ---
@@ -23,6 +22,7 @@ Analyze the repo and user goals to assemble a minimal, justified skill stack. Pr
 - Goals and priority tasks
 - Trust policy (official-only vs allow community)
 - Constraints: network, tools, compliance, time
+- Requires web access for registry searches
 
 ## Workflow
 
