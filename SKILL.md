@@ -12,8 +12,10 @@ Analyze the repo and user goals to assemble a minimal, justified skill stack. Pr
 ## Required inputs (confirm before external search)
 
 - Goals and priority tasks
-- Trust policy (official-only vs allow community)
+- Trust policy / tiers to target (official-only vs allow maintained vs allow community)
 - Permission to browse external sources (ask only if not already granted in this session)
+
+If any required input is missing, ask for it and stop. Do not list candidates or recommendations until the user answers or explicitly waives questions.
 
 ## Workflow
 
@@ -30,9 +32,12 @@ Analyze the repo and user goals to assemble a minimal, justified skill stack. Pr
 - Proceed to Step 3 only after answers **or** an explicit user waiver such as “skip questions, assume defaults.”
 - If the user waives questions, record the assumptions and state them in your response.
 - Ask for permission to browse only if not already granted.
+- Ask which trust tiers to target (official-only, maintained, community) if not provided.
+- Do not present candidate lists or recommendations in this step.
 
 ### 3) Discover candidate skills (evidence-based)
 - Do not browse until required inputs are confirmed.
+- If browsing permission is denied, skip external search and limit discovery to local skills; state the limitation clearly.
 - Search skill registries and sources using your agent's web search/browse tools.
 
 Search targets:
@@ -56,7 +61,7 @@ Inspection checklist:
 - If a skill is not well established, label it as optional and do not recommend it by default.
 
 ### 6) Recommend a stack (or variants)
-- Always provide a recommended stack.
+- Provide a recommended stack only after required inputs are confirmed (or explicitly waived) and discovery/inspection is complete.
 - If there is no clear single best choice, provide 2-3 variants with tradeoffs (coverage vs risk vs maintenance).
 - For each skill, include purpose, source, trust tier, and overlap notes.
 
@@ -93,6 +98,8 @@ If the user explicitly waives questions, state the assumptions in your response.
 - Project root: current working directory
 
 ## Output format (concise)
+
+If required inputs are missing: ask questions only and stop.
 
 - Project dossier: stack, goals, constraints, key workflows
 - Candidate skills: source + trust tier + inspection notes
