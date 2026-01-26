@@ -25,6 +25,7 @@ If any required input is missing, ask for it and stop. Do not list candidates or
 - Read key docs: `AGENTS.md`, `README*`, `docs/`, `CHANGELOG*`, `package.json`, `pyproject.toml`, `requirements*`, `go.mod`, `Cargo.toml`, `pom.xml`, `Makefile`, CI configs, infra/IaC files.
 - Find domain keywords, APIs, and workflows using your agent's file discovery and content search tools.
 - Summarize: domain, stack, critical workflows, tools, constraints, and risks.
+- Inventory currently installed local skills for overlap awareness only.
 
 ### 2) Ask clarifying questions (required)
 - Ask clarifying questions **before any external search**.
@@ -64,9 +65,11 @@ Minimum evidence:
 - Rate trust tier: Official / Maintained / Community.
 - Create a capability matrix to avoid duplicate coverage.
 - If a skill is not well established, label it as optional and do not recommend it by default.
+- Consider local skills only to avoid overlap; do not recommend them unless the user explicitly asks for a local-only stack.
 
 ### 6) Recommend a stack (or variants)
 - Provide a recommended stack only after required inputs are confirmed (or explicitly waived) and discovery/inspection is complete.
+- Recommendations must be **external skills only**. Local skills can be mentioned as context but must not be included in the stack unless the user explicitly requests a local-only recommendation.
 - If there is no clear single best choice, provide 2-3 variants with tradeoffs (coverage vs risk vs maintenance).
 - For each skill, include purpose, source, trust tier, and overlap notes.
 - If steps 3–5 were not completed when external browsing is permitted, respond with **blocked: external discovery not completed** and list what is missing.
@@ -111,8 +114,9 @@ If required inputs are missing: ask questions only and stop.
 - Search log: queries + source domains (only when external search is used)
 - Inspection notes: per candidate
 - Candidate skills: source + trust tier + inspection notes
+- Local skills (awareness only): list but do not recommend
 - Overlap analysis: what each skill covers and conflicts
-- Recommendations: primary stack + optional variants
+- Recommendations (external only): primary stack + optional variants
 - Checklist: Discovery ☐ Inspection ☐ Overlap ☐ Recommendation
 - Assumptions (if any)
 - Next step: confirm install target
