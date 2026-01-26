@@ -101,6 +101,7 @@ Inspection checklist:
 - Scan scripts/references for required tools and dependencies.
 - Check activity signals (recent commits/releases, issues health).
 - Confirm compatibility with the target agent (current client).
+- Assess confidence (High/Medium/Low) using evidence you can verify: trust tier, recency/activity, documentation quality, project fit, and overlap. Do not invent install counts.
 
 Minimum evidence:
 - If external browsing is permitted and available, inspect at least 3 external candidates (or all found, whichever is smaller).
@@ -117,7 +118,8 @@ Minimum evidence:
 - Provide a recommended stack only after required inputs are confirmed (or explicitly waived) and discovery/inspection is complete.
 - Recommendations must be **external skills only**. Local skills can be mentioned as context but must never be included in the stack.
 - If there is no clear single best choice, provide 2-3 variants with tradeoffs (coverage vs risk vs maintenance).
-- For each skill, include purpose, source, trust tier, and overlap notes.
+- For each skill, include purpose, source, trust tier, overlap notes, and a confidence rating (High/Medium/Low) with a 1–2 sentence rationale.
+- Do not include Low-confidence skills in the primary stack. List them separately under **Experimental / Unverified** with explicit caveats.
 - If steps 3–5 were not completed when external browsing is permitted, respond with **blocked: external discovery not completed** and list what is missing.
 
 ### 7) Confirm and install (agent-aware)
@@ -173,7 +175,8 @@ If required inputs are missing: ask questions only and stop.
 - Candidate skills: source + trust tier + inspection notes
 - Local skills (awareness only): list but do not recommend
 - Overlap analysis: what each skill covers and conflicts
-- Recommendations (external only): primary stack + optional variants
+- Recommendations (external only): primary stack + optional variants, each with confidence + rationale
+- Experimental / Unverified: Low-confidence skills with explicit caveats (optional)
 - Checklist: Discovery ☐ Inspection ☐ Overlap ☐ Recommendation
 - Assumptions (if any)
 - Next step: confirm install target
