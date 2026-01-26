@@ -17,6 +17,7 @@ This skill follows the Agent Skills format (`SKILL.md` with YAML frontmatter) an
 
 ## What it does
 - Scans a project and builds a concise dossier (stack, workflows, constraints).
+- Asks clarifying questions before any external search.
 - Searches skills registries and inspects candidates before recommending them.
 - Prefers official or trusted sources and flags unproven skills as optional.
 - Recommends a minimal stack and installs only after confirmation.

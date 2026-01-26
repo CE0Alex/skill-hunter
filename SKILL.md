@@ -1,12 +1,6 @@
 ---
 name: skill-hunter
 description: Use when asked to analyze a project/codebase to recommend a skill stack, evaluate or de-duplicate skills, or install project-level skills based on repo context and user goals.
-license: MIT
-metadata:
-  author: CE0Alex
-  version: "1.0.4"
-  short-description: Analyze a repo and recommend or install a best-fit skill stack.
-  argument-hint: <repo-root|path|url>
 ---
 
 # Skill Hunter
@@ -15,14 +9,13 @@ metadata:
 
 Analyze the repo and user goals to assemble a minimal, justified skill stack. Prefer official sources, inspect every candidate, and install only after user confirmation using agent-specific locations.
 
-## Inputs
+## Required inputs (confirm before external search)
 
-- Project root or repo URL
 - Target agent (Codex CLI, Claude Code, or other)
 - Goals and priority tasks
 - Trust policy (official-only vs allow community)
-- Constraints: network, tools, compliance, time
-- Requires web access for registry searches
+- Output mode (recommend only vs. install)
+- Explicit permission to browse external sources
 
 ## Workflow
 
@@ -33,12 +26,14 @@ Analyze the repo and user goals to assemble a minimal, justified skill stack. Pr
 - Find domain keywords, APIs, and workflows using your agent's file discovery and content search tools.
 - Summarize: domain, stack, critical workflows, tools, constraints, and risks.
 
-### 2) Ask clarifying questions
-- Ask only what is needed to remove ambiguity: goals, priorities, timelines, environments, compliance, risk tolerance, and must-have workflows.
-- If user intent is already clear, proceed without extra questions.
+### 2) Ask clarifying questions (required)
+- Ask clarifying questions **before any external search**.
+- Proceed to Step 3 only after answers **or** an explicit user waiver such as “skip questions, assume defaults.”
+- If the user waives questions, record the assumptions and state them in your response.
 
 ### 3) Discover candidate skills (evidence-based)
-Search skill registries and sources using your agent's web search/browse tools.
+- Do not browse or recommend until required inputs are confirmed.
+- Search skill registries and sources using your agent's web search/browse tools.
 
 Search targets:
 - context7.com (skills tab)
@@ -66,6 +61,7 @@ Inspection checklist:
 - For each skill, include purpose, source, trust tier, and overlap notes.
 
 ### 7) Confirm and install (agent-aware)
+- Do not recommend or install skills until required inputs are confirmed.
 - Ask the user to confirm the chosen stack before installing.
 
 **Codex CLI**
@@ -89,10 +85,21 @@ Inspection checklist:
 - Ask for the official project-level skills path or CLI for that client.
 - If no official guidance exists, present a best-effort option and mark it as unverified.
 
+## Assumptions (only if user waives questions)
+
+If the user explicitly waives questions, state the assumptions in your response. Defaults:
+- Target agent: current client
+- Goals: recommend the best-fit skill stack for the project
+- Trust policy: official-only
+- Output mode: recommend only (no install)
+- Permission to browse: granted
+- Project root: current working directory
+
 ## Output format (concise)
 
 - Project dossier: stack, goals, constraints, key workflows
 - Candidate skills: source + trust tier + inspection notes
 - Overlap analysis: what each skill covers and conflicts
-- Recommendation: primary stack + optional variants
+- Recommendations: primary stack + optional variants
+- Assumptions (if any)
 - Next step: confirm install target
