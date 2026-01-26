@@ -13,9 +13,9 @@ Analyze the repo and user goals to assemble a minimal, justified skill stack. Pr
 
 - Goals and priority tasks
 - Trust policy / tiers to target (official-only vs allow maintained vs allow community)
-- Permission to browse external sources (ask only if not already granted in this session)
+- Permission to browse external sources (determine from client config/session; ask only if unclear or denied)
 
-If any required input is missing, ask for it and stop. Do not list candidates or recommendations until the user answers or explicitly waives questions.
+If any required input is missing, ask for it and stop. Do not list candidates or recommendations until the user answers or explicitly waives questions. If the client already indicates browsing is allowed, treat permission as granted and do not ask.
 
 ## Workflow
 
@@ -31,7 +31,7 @@ If any required input is missing, ask for it and stop. Do not list candidates or
 - Do not ask which agent is in use; assume the current client.
 - Proceed to Step 3 only after answers **or** an explicit user waiver such as “skip questions, assume defaults.”
 - If the user waives questions, record the assumptions and state them in your response.
-- Ask for permission to browse only if not already granted.
+- Ask for permission to browse only if the client does not already indicate permission is granted.
 - Ask which trust tiers to target (official-only, maintained, community) if not provided.
 - Do not present candidate lists or recommendations in this step.
 
