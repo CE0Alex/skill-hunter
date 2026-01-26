@@ -35,6 +35,8 @@ Place the skill here for a project:
 ./.claude/skills/skill-hunter/
 ```
 
+Note: `allowed-tools` frontmatter is supported only in Claude Code.
+
 ### Claude (web/desktop)
 Upload the skill as a ZIP via Settings > Capabilities.
 
