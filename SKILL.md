@@ -36,6 +36,7 @@ If any required input is missing, ask for it and stop. Do not list candidates or
 - Ask clarifying questions **before any external search**.
 - Do not ask which agent is in use; assume the current client.
 - Proceed to Step 3 only after answers **or** an explicit user waiver such as “skip questions, assume defaults.”
+- Do **not** treat “obvious” goals as a waiver; the waiver must be explicit.
 - If the user waives questions, record the assumptions and state them in your response.
 - Ask which trust tiers to target (official-only, maintained, community) if not provided.
 - Do not present candidate lists or recommendations in this step.
@@ -52,6 +53,10 @@ Search targets:
 - GitHub search: `SKILL.md in:path <technology>`
 
 Prefer official/trusted sources: skills created/maintained by the tool or company that owns the tech in the codebase. If a registry is unavailable, say so and fall back to GitHub search or the vendor's official docs.
+
+Hard gates:
+- If Context7 skills and skills.sh were not searched (or explicitly unavailable), respond with **blocked: external discovery not completed** and list what is missing.
+- Do not list candidates unless required sources were searched or you explicitly state why they were unavailable.
 
 ### 4) Inspect each candidate (no assumptions)
 Inspection checklist:
@@ -115,7 +120,7 @@ If the user explicitly waives questions, state the assumptions in your response.
 If required inputs are missing: ask questions only and stop.
 
 - Project dossier: stack, goals, constraints, key workflows
-- Search log: queries + source domains (only when external search is used)
+- Search log: tool + query + source domain (only when external search is used). Do not fabricate logs or links.
 - Inspection notes: per candidate
 - Candidate skills: source + trust tier + inspection notes
 - Local skills (awareness only): list but do not recommend

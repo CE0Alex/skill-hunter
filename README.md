@@ -22,6 +22,7 @@ This skill follows the Agent Skills format (`SKILL.md` with YAML frontmatter) an
 - If required inputs are missing, asks questions only and does not present candidates or recommendations.
 - When external browsing is permitted and available, requires a concise search log and inspection notes before recommendations.
 - Recommendations are based on **external skills only**; local skills are listed for overlap awareness and never included in the stack.
+- Requires explicit waiver phrase (e.g., “skip questions, assume defaults”) to proceed without answers.
 - Searches skills registries and inspects candidates before recommending them.
 - Prefers official or trusted sources and flags unproven skills as optional.
 - States assumptions when the user explicitly waives questions.
