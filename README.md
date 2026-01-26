@@ -20,7 +20,7 @@ This skill follows the Agent Skills format (`SKILL.md` with YAML frontmatter) an
 - Asks clarifying questions and trust tier preferences before any external search.
 - Requests permission to browse only if it is not already granted.
 - If required inputs are missing, asks questions only and does not present candidates or recommendations.
-- When external browsing is permitted, requires a search log and inspection notes before recommendations.
+- When external browsing is permitted and available, requires a concise search log and inspection notes before recommendations.
 - Searches skills registries and inspects candidates before recommending them.
 - Prefers official or trusted sources and flags unproven skills as optional.
 - States assumptions when the user explicitly waives questions.

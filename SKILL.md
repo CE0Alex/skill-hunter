@@ -37,9 +37,9 @@ If any required input is missing, ask for it and stop. Do not list candidates or
 
 ### 3) Discover candidate skills (evidence-based)
 - Do not browse until required inputs are confirmed.
-- If browsing permission is denied, skip external search and limit discovery to local skills; state the limitation clearly.
-- Search skill registries and sources using your agent's web search/browse tools.
-- If permission is granted, you must perform external discovery with web search and include a search log in the response.
+- If browsing permission is denied or the client has no external search capability, skip external search and limit discovery to local skills; state the limitation clearly and stop.
+- Search skill registries and sources using the client’s external search/browse capability (if available).
+- If permission is granted and capability exists, you must perform external discovery and include a concise search log in the response.
 
 Search targets:
 - context7.com (skills tab)
@@ -57,8 +57,8 @@ Inspection checklist:
 - Confirm compatibility with the target agent (current client).
 
 Minimum evidence:
-- If external browsing is permitted, inspect at least 3 external candidates.
-- If fewer than 3 candidates exist after exhaustive search, return **blocked: insufficient external candidates** and list the searches performed.
+- If external browsing is permitted and available, inspect at least 3 external candidates (or all found, whichever is smaller).
+- If no external candidates exist after exhaustive search, return **blocked: insufficient external candidates** and list the searches performed.
 
 ### 5) Evaluate quality and overlap
 - Rate trust tier: Official / Maintained / Community.
@@ -108,7 +108,7 @@ If the user explicitly waives questions, state the assumptions in your response.
 If required inputs are missing: ask questions only and stop.
 
 - Project dossier: stack, goals, constraints, key workflows
-- Search log: queries + source domains
+- Search log: queries + source domains (only when external search is used)
 - Inspection notes: per candidate
 - Candidate skills: source + trust tier + inspection notes
 - Overlap analysis: what each skill covers and conflicts
