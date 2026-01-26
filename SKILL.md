@@ -1,6 +1,6 @@
 ---
 name: skill-hunter
-description: Use when asked "what skills should I use", "recommend skills for this project", "which skills apply here", "audit my skills", or when evaluating skill coverage for a codebase. Also use when user asks about skills in general for their project context.
+description: Use when the user wants to find NEW external skills for a project, build a skill stack from external registries, or compare external options against project needs. Do not use for questions about how to use already-installed/local skills.
 ---
 
 # Skill Hunter
@@ -11,14 +11,24 @@ Analyze the repo and user goals to assemble a minimal, justified skill stack. Pr
 
 ## Trigger phrases (use this skill when you hear)
 
-- "What skills should I use for this project?"
-- "Recommend skills for [technology/domain]"
+- "Find new skills for this project"
+- "Recommend external skills for [technology/domain]"
 - "Which skills apply here?"
-- "Audit my skill setup"
+- "Compare external skills to what we have"
 - "Are there better skills than what I have?"
-- "What skills exist for [X]?"
+- "What external skills exist for [X]?"
 - "Help me find skills for [task]"
-- "Do I have the right skills installed?"
+
+## Non-triggers (do not use this skill)
+
+- "Which local skills should I use?"
+- "How do I use these installed skills?"
+- "Explain what this installed skill does"
+- Requests limited to already-installed/local skills with no external discovery
+
+## Scope check (before required inputs)
+
+If the user is asking only about already-installed/local skills, do **not** run Skill Hunter. Ask whether they want external skill discovery; if not, answer directly without invoking the workflow.
 
 ## Required inputs (confirm before external search)
 

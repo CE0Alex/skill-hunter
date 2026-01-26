@@ -1,6 +1,6 @@
 # Skill Hunter
 
-Agent skill to analyze a repo and recommend a best-fit skill stack with verified sources.
+Agent skill to analyze a repo and recommend a best-fit **external** skill stack with verified sources.
 
 ## Compatibility
 
@@ -22,6 +22,7 @@ This skill follows the Agent Skills format (`SKILL.md` with YAML frontmatter) an
 - If required inputs are missing, asks questions only and does not present candidates or recommendations.
 - When external browsing is permitted and available, requires a concise search log and inspection notes before recommendations.
 - Recommendations are based on **external skills only**; local skills are listed for overlap awareness and never included in the stack.
+- If the user only wants guidance on already-installed/local skills, Skill Hunter should not run; ask if they want external discovery.
 - Recommendations include a confidence rating (High/Medium/Low) with a brief rationale; Low-confidence skills are listed separately as Experimental/Unverified.
 - Requires explicit waiver phrase (e.g., “skip questions, assume defaults”) to proceed without answers.
 - Context7 discovery requires the Context7 CLI (`ctx7`) or `npx -y ctx7`; if neither is available, the search log must mark Context7 as unavailable.
