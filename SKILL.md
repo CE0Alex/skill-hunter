@@ -48,15 +48,17 @@ If any required input is missing, ask for it and stop. Do not list candidates or
 - If permission is granted and capability exists, you must perform external discovery and include a concise search log in the response.
 
 Search targets:
-- context7.com (skills tab)
-- skills.sh
+- Context7 registry (requires Context7 CLI for search; if CLI unavailable, mark as unavailable and note)
+- skills.sh (homepage leaderboard + relevant skill detail pages)
 - GitHub search: `SKILL.md in:path <technology>`
 
 Prefer official/trusted sources: skills created/maintained by the tool or company that owns the tech in the codebase. If a registry is unavailable, say so and fall back to GitHub search or the vendor's official docs.
 
 Hard gates:
-- If Context7 skills and skills.sh were not searched (or explicitly unavailable), respond with **blocked: external discovery not completed** and list what is missing.
+- Skills.sh must be searched via the homepage leaderboard. If not, respond with **blocked: external discovery not completed** and list what is missing.
+- Context7 must be attempted via CLI search (`ctx7 skills search ...`). If the CLI is not available, mark Context7 as **unavailable** in the search log and proceed.
 - Do not list candidates unless required sources were searched or you explicitly state why they were unavailable.
+- For skills.sh, open at least one relevant skill detail page (or explicitly state that none were relevant).
 
 ### 4) Inspect each candidate (no assumptions)
 Inspection checklist:
@@ -121,6 +123,8 @@ If required inputs are missing: ask questions only and stop.
 
 - Project dossier: stack, goals, constraints, key workflows
 - Search log: tool + query + source domain (only when external search is used). Do not fabricate logs or links.
+  - For Context7, record CLI commands used or mark as unavailable if CLI is not present.
+- Required sources: Context7 (ok/unavailable), skills.sh (ok), GitHub (ok)
 - Inspection notes: per candidate
 - Candidate skills: source + trust tier + inspection notes
 - Local skills (awareness only): list but do not recommend
