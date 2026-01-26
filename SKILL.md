@@ -1,6 +1,6 @@
 ---
 name: skill-hunter
-description: Use when asked to analyze a project/codebase to recommend a skill stack, evaluate or de-duplicate skills, or install project-level skills based on repo context and user goals.
+description: Use when asked "what skills should I use", "recommend skills for this project", "which skills apply here", "audit my skills", or when evaluating skill coverage for a codebase. Also use when user asks about skills in general for their project context.
 ---
 
 # Skill Hunter
@@ -8,6 +8,17 @@ description: Use when asked to analyze a project/codebase to recommend a skill s
 ## Overview
 
 Analyze the repo and user goals to assemble a minimal, justified skill stack. Prefer official sources, inspect every candidate, and install only after user confirmation.
+
+## Trigger phrases (use this skill when you hear)
+
+- "What skills should I use for this project?"
+- "Recommend skills for [technology/domain]"
+- "Which skills apply here?"
+- "Audit my skill setup"
+- "Are there better skills than what I have?"
+- "What skills exist for [X]?"
+- "Help me find skills for [task]"
+- "Do I have the right skills installed?"
 
 ## Required inputs (confirm before external search)
 
@@ -64,8 +75,11 @@ Search targets:
 Prefer official/trusted sources: skills created/maintained by the tool or company that owns the tech in the codebase. If a registry is unavailable, say so and fall back to GitHub search or the vendor's official docs.
 
 Hard gates:
-- Skills.sh must be searched via the homepage leaderboard. If not, respond with **blocked: external discovery not completed** and list what is missing.
-- Context7 must be attempted via CLI search (`ctx7 skills search ...` or `npx -y ctx7 skills search ...`). If the CLI is not available, mark Context7 as **unavailable** in the search log and proceed.
+- Skills.sh must be searched via the homepage leaderboard.
+- Context7 must be attempted via CLI search (`ctx7 skills search ...` or `npx -y ctx7 skills search ...`).
+- GitHub search should be performed for relevant technologies.
+- If a source is unavailable, log the failure, mark it **unavailable** in the search log, and proceed.
+- Block only if all sources fail or if required sources were skipped without a stated reason.
 - Do not list candidates unless required sources were searched or you explicitly state why they were unavailable.
 - For skills.sh, open at least one relevant skill detail page (or explicitly state that none were relevant).
 
@@ -122,6 +136,13 @@ Minimum evidence:
 **Other clients**
 - Ask for the official project-level skills path or CLI for that client.
 - If no official guidance exists, present a best-effort option and mark it as unverified.
+
+### 8) Verify installation
+After installing skills:
+1. Confirm each skill folder exists at the expected path
+2. Read each SKILL.md frontmatter to verify it loads
+3. List installed skills to the user with a brief description
+4. Suggest a quick "run/use" test for key skills
 
 ## Assumptions (only if user waives questions)
 
