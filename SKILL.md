@@ -7,15 +7,13 @@ description: Use when asked to analyze a project/codebase to recommend a skill s
 
 ## Overview
 
-Analyze the repo and user goals to assemble a minimal, justified skill stack. Prefer official sources, inspect every candidate, and install only after user confirmation using agent-specific locations.
+Analyze the repo and user goals to assemble a minimal, justified skill stack. Prefer official sources, inspect every candidate, and install only after user confirmation.
 
 ## Required inputs (confirm before external search)
 
-- Target agent (Codex CLI, Claude Code, or other)
 - Goals and priority tasks
 - Trust policy (official-only vs allow community)
-- Output mode (recommend only vs. install)
-- Explicit permission to browse external sources
+- Permission to browse external sources (ask only if not already granted in this session)
 
 ## Workflow
 
@@ -28,11 +26,13 @@ Analyze the repo and user goals to assemble a minimal, justified skill stack. Pr
 
 ### 2) Ask clarifying questions (required)
 - Ask clarifying questions **before any external search**.
+- Do not ask which agent is in use; assume the current client.
 - Proceed to Step 3 only after answers **or** an explicit user waiver such as “skip questions, assume defaults.”
 - If the user waives questions, record the assumptions and state them in your response.
+- Ask for permission to browse only if not already granted.
 
 ### 3) Discover candidate skills (evidence-based)
-- Do not browse or recommend until required inputs are confirmed.
+- Do not browse until required inputs are confirmed.
 - Search skill registries and sources using your agent's web search/browse tools.
 
 Search targets:
@@ -48,7 +48,7 @@ Inspection checklist:
 - Verify maintainer, license, and install method.
 - Scan scripts/references for required tools and dependencies.
 - Check activity signals (recent commits/releases, issues health).
-- Confirm compatibility with the target agent.
+- Confirm compatibility with the target agent (current client).
 
 ### 5) Evaluate quality and overlap
 - Rate trust tier: Official / Maintained / Community.
@@ -56,13 +56,12 @@ Inspection checklist:
 - If a skill is not well established, label it as optional and do not recommend it by default.
 
 ### 6) Recommend a stack (or variants)
-- Provide a primary stack when there is a clear best choice.
-- If not, provide 2-3 variants with tradeoffs (coverage vs risk vs maintenance).
+- Always provide a recommended stack.
+- If there is no clear single best choice, provide 2-3 variants with tradeoffs (coverage vs risk vs maintenance).
 - For each skill, include purpose, source, trust tier, and overlap notes.
 
 ### 7) Confirm and install (agent-aware)
-- Do not recommend or install skills until required inputs are confirmed.
-- Ask the user to confirm the chosen stack before installing.
+- Only install after the user confirms their chosen stack.
 
 **Codex CLI**
 - Install to `<repo>/.codex/skills/<skill-name>/` by default.
@@ -88,11 +87,9 @@ Inspection checklist:
 ## Assumptions (only if user waives questions)
 
 If the user explicitly waives questions, state the assumptions in your response. Defaults:
-- Target agent: current client
 - Goals: recommend the best-fit skill stack for the project
 - Trust policy: official-only
-- Output mode: recommend only (no install)
-- Permission to browse: granted
+- Permission to browse: use existing permission; if none, ask before browsing
 - Project root: current working directory
 
 ## Output format (concise)

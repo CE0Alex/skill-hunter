@@ -17,7 +17,8 @@ This skill follows the Agent Skills format (`SKILL.md` with YAML frontmatter) an
 
 ## What it does
 - Scans a project and builds a concise dossier (stack, workflows, constraints).
-- Asks clarifying questions and requests permission before any external search.
+- Asks clarifying questions before any external search.
+- Requests permission to browse only if it is not already granted.
 - Searches skills registries and inspects candidates before recommending them.
 - Prefers official or trusted sources and flags unproven skills as optional.
 - States assumptions when the user explicitly waives questions.
