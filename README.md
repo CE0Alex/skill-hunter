@@ -28,6 +28,8 @@ This skill follows the Agent Skills format (`SKILL.md` with YAML frontmatter) an
 - skills.sh must also open at least one relevant skill detail page (or explicitly state none were relevant).
 - Category focus is requested up front; users can pick any number or say “all.” Includes an **Other** option for custom categories.
 - Verifies installs after confirmation (checks paths, reads SKILL.md, and summarizes installed skills).
+- Requires a search matrix across selected categories × sources (Context7, skills.sh, GitHub) unless a source is unavailable.
+- External candidates that match already-installed local skills are treated as already installed and excluded from recommendations.
 - Searches skills registries and inspects candidates before recommending them.
 - Prefers official or trusted sources and flags unproven skills as optional.
 - States assumptions when the user explicitly waives questions.

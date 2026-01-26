@@ -88,6 +88,12 @@ Context7 CLI guidance:
 - If not installed, try `npx -y ctx7 skills search "<query>"` (do not install skills; cancel after results list).
 - If the CLI is interactive, record the results shown and exit without selection/installation.
 
+Search matrix requirement:
+- For each selected category, run at least one query per source (Context7, skills.sh, GitHub) unless that source is unavailable.
+- Do not “sample” a few skills; cover each category × source. If the search budget is large, ask the user to cap it (default: 1 query per category per source).
+- Reuse the same query terms across sources when possible to keep coverage consistent.
+- For skills.sh, use the homepage leaderboard plus `site:skills.sh <term>` web search to find relevant detail pages.
+
 ### 4) Inspect each candidate (no assumptions)
 Inspection checklist:
 - Open SKILL.md and read frontmatter and body.
@@ -105,6 +111,7 @@ Minimum evidence:
 - Create a capability matrix to avoid duplicate coverage.
 - If a skill is not well established, label it as optional and do not recommend it by default.
 - Consider local skills only to avoid overlap; never recommend them.
+- If an external candidate matches a locally installed skill (same name or same repo), treat it as already installed and exclude it from recommendations; note it under Local Skills.
 
 ### 6) Recommend a stack (or variants)
 - Provide a recommended stack only after required inputs are confirmed (or explicitly waived) and discovery/inspection is complete.
@@ -161,6 +168,7 @@ If required inputs are missing: ask questions only and stop.
 - Search log: tool + query + source domain (only when external search is used). Do not fabricate logs or links.
   - For Context7, record CLI commands used (ctx7 or npx) or mark as unavailable if CLI is not present.
 - Required sources: Context7 (ok/unavailable), skills.sh (ok), GitHub (ok)
+- Search matrix: categories × sources with queries used
 - Inspection notes: per candidate
 - Candidate skills: source + trust tier + inspection notes
 - Local skills (awareness only): list but do not recommend
