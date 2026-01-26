@@ -65,11 +65,11 @@ Minimum evidence:
 - Rate trust tier: Official / Maintained / Community.
 - Create a capability matrix to avoid duplicate coverage.
 - If a skill is not well established, label it as optional and do not recommend it by default.
-- Consider local skills only to avoid overlap; do not recommend them unless the user explicitly asks for a local-only stack.
+- Consider local skills only to avoid overlap; never recommend them.
 
 ### 6) Recommend a stack (or variants)
 - Provide a recommended stack only after required inputs are confirmed (or explicitly waived) and discovery/inspection is complete.
-- Recommendations must be **external skills only**. Local skills can be mentioned as context but must not be included in the stack unless the user explicitly requests a local-only recommendation.
+- Recommendations must be **external skills only**. Local skills can be mentioned as context but must never be included in the stack.
 - If there is no clear single best choice, provide 2-3 variants with tradeoffs (coverage vs risk vs maintenance).
 - For each skill, include purpose, source, trust tier, and overlap notes.
 - If steps 3–5 were not completed when external browsing is permitted, respond with **blocked: external discovery not completed** and list what is missing.
