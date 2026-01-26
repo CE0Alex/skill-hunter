@@ -13,6 +13,7 @@ Analyze the repo and user goals to assemble a minimal, justified skill stack. Pr
 
 - Goals and priority tasks
 - Trust policy / tiers to target (official-only vs allow maintained vs allow community)
+- Category focus (pick any; default to "all categories" if not specified)
 
 If any required input is missing, ask for it and stop. Do not list candidates or recommendations until the user answers or explicitly waives questions.
 
@@ -39,6 +40,14 @@ If any required input is missing, ask for it and stop. Do not list candidates or
 - Do **not** treat “obvious” goals as a waiver; the waiver must be explicit.
 - If the user waives questions, record the assumptions and state them in your response.
 - Ask which trust tiers to target (official-only, maintained, community) if not provided.
+- Ask which categories to prioritize (user may pick any number):
+  - Product, UX & Content (frameworks, UI/a11y, design, SEO, copywriting)
+  - DevOps & Delivery (deploy, CI/CD, hosting, environment setup)
+  - Integrations & SaaS APIs (payments, CRM, auth, analytics)
+  - Data & Documents (ETL, DBs, CSV/XLSX/PDF/DOCX/PPTX)
+  - Quality & Safety (testing, debugging, security, performance, reliability)
+  - Tooling & Automation (browser use, scraping, agent tools, workflow automation)
+  - Other (user-defined)
 - Do not present candidate lists or recommendations in this step.
 
 ### 3) Discover candidate skills (evidence-based)
@@ -121,6 +130,7 @@ If the user explicitly waives questions, state the assumptions in your response.
 - Trust policy: official-only
 - Permission to browse: use existing permission; if none, ask before browsing
 - Project root: current working directory
+- Category focus: all categories
 
 ## Output format (concise)
 

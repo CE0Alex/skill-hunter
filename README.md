@@ -26,6 +26,7 @@ This skill follows the Agent Skills format (`SKILL.md` with YAML frontmatter) an
 - Context7 discovery requires the Context7 CLI (`ctx7`) or `npx -y ctx7`; if neither is available, the search log must mark Context7 as unavailable.
 - skills.sh discovery must use the homepage leaderboard.
 - skills.sh must also open at least one relevant skill detail page (or explicitly state none were relevant).
+- Category focus is requested up front; users can pick any number or say “all.” Includes an **Other** option for custom categories.
 - Searches skills registries and inspects candidates before recommending them.
 - Prefers official or trusted sources and flags unproven skills as optional.
 - States assumptions when the user explicitly waives questions.
