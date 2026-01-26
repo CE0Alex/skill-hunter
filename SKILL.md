@@ -39,6 +39,7 @@ If any required input is missing, ask for it and stop. Do not list candidates or
 - Do not browse until required inputs are confirmed.
 - If browsing permission is denied, skip external search and limit discovery to local skills; state the limitation clearly.
 - Search skill registries and sources using your agent's web search/browse tools.
+- If permission is granted, you must perform external discovery with web search and include a search log in the response.
 
 Search targets:
 - context7.com (skills tab)
@@ -55,6 +56,10 @@ Inspection checklist:
 - Check activity signals (recent commits/releases, issues health).
 - Confirm compatibility with the target agent (current client).
 
+Minimum evidence:
+- If external browsing is permitted, inspect at least 3 external candidates.
+- If fewer than 3 candidates exist after exhaustive search, return **blocked: insufficient external candidates** and list the searches performed.
+
 ### 5) Evaluate quality and overlap
 - Rate trust tier: Official / Maintained / Community.
 - Create a capability matrix to avoid duplicate coverage.
@@ -64,6 +69,7 @@ Inspection checklist:
 - Provide a recommended stack only after required inputs are confirmed (or explicitly waived) and discovery/inspection is complete.
 - If there is no clear single best choice, provide 2-3 variants with tradeoffs (coverage vs risk vs maintenance).
 - For each skill, include purpose, source, trust tier, and overlap notes.
+- If steps 3–5 were not completed when external browsing is permitted, respond with **blocked: external discovery not completed** and list what is missing.
 
 ### 7) Confirm and install (agent-aware)
 - Only install after the user confirms their chosen stack.
@@ -102,8 +108,11 @@ If the user explicitly waives questions, state the assumptions in your response.
 If required inputs are missing: ask questions only and stop.
 
 - Project dossier: stack, goals, constraints, key workflows
+- Search log: queries + source domains
+- Inspection notes: per candidate
 - Candidate skills: source + trust tier + inspection notes
 - Overlap analysis: what each skill covers and conflicts
 - Recommendations: primary stack + optional variants
+- Checklist: Discovery ☐ Inspection ☐ Overlap ☐ Recommendation
 - Assumptions (if any)
 - Next step: confirm install target
