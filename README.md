@@ -24,14 +24,25 @@ This skill follows the Agent Skills format (`SKILL.md` with YAML frontmatter) an
 
 If you are unsure where your client expects skills, check its documentation for the project-level skills path or import flow.
 
+### Claude Code (CLI)
+Claude Code discovers skills from:
+- Personal skills: `~/.claude/skills/`
+- Project skills: `.claude/skills/` (in the project root)
+- Plugin skills: bundled with installed plugins
+
+Place the skill here for a project:
+```
+./.claude/skills/skill-hunter/
+```
+
+### Claude (web/desktop)
+Upload the skill as a ZIP via Settings > Capabilities.
+
 ### Codex (example)
 Project-level path under the repo root:
 ```
 ./.codex/skills/skill-hunter/
 ```
-
-### Claude / Claude Code (example)
-Upload the skill as a ZIP via Settings > Capabilities.
 
 ## Usage (example)
 "Please use Skill Hunter to find the best skills to work on this project."
@@ -40,7 +51,8 @@ Upload the skill as a ZIP via Settings > Capabilities.
 ```
 skill-hunter/
 ├── SKILL.md
-└── LICENSE
+├── LICENSE
+└── README.md
 ```
 
 ## License
