@@ -23,7 +23,7 @@ This skill follows the Agent Skills format (`SKILL.md` with YAML frontmatter) an
 - When external browsing is permitted and available, requires a concise search log and inspection notes before recommendations.
 - Recommendations are based on **external skills only**; local skills are listed for overlap awareness and never included in the stack.
 - Requires explicit waiver phrase (e.g., “skip questions, assume defaults”) to proceed without answers.
-- Context7 discovery requires the Context7 CLI; if it is not available, the search log must mark Context7 as unavailable.
+- Context7 discovery requires the Context7 CLI (`ctx7`) or `npx -y ctx7`; if neither is available, the search log must mark Context7 as unavailable.
 - skills.sh discovery must use the homepage leaderboard.
 - skills.sh must also open at least one relevant skill detail page (or explicitly state none were relevant).
 - Searches skills registries and inspects candidates before recommending them.

@@ -48,7 +48,7 @@ If any required input is missing, ask for it and stop. Do not list candidates or
 - If permission is granted and capability exists, you must perform external discovery and include a concise search log in the response.
 
 Search targets:
-- Context7 registry (requires Context7 CLI for search; if CLI unavailable, mark as unavailable and note)
+- Context7 registry (use CLI search; see below)
 - skills.sh (homepage leaderboard + relevant skill detail pages)
 - GitHub search: `SKILL.md in:path <technology>`
 
@@ -56,9 +56,14 @@ Prefer official/trusted sources: skills created/maintained by the tool or compan
 
 Hard gates:
 - Skills.sh must be searched via the homepage leaderboard. If not, respond with **blocked: external discovery not completed** and list what is missing.
-- Context7 must be attempted via CLI search (`ctx7 skills search ...`). If the CLI is not available, mark Context7 as **unavailable** in the search log and proceed.
+- Context7 must be attempted via CLI search (`ctx7 skills search ...` or `npx -y ctx7 skills search ...`). If the CLI is not available, mark Context7 as **unavailable** in the search log and proceed.
 - Do not list candidates unless required sources were searched or you explicitly state why they were unavailable.
 - For skills.sh, open at least one relevant skill detail page (or explicitly state that none were relevant).
+
+Context7 CLI guidance:
+- Prefer `ctx7 skills search "<query>"` if installed.
+- If not installed, try `npx -y ctx7 skills search "<query>"` (do not install skills; cancel after results list).
+- If the CLI is interactive, record the results shown and exit without selection/installation.
 
 ### 4) Inspect each candidate (no assumptions)
 Inspection checklist:
@@ -123,7 +128,7 @@ If required inputs are missing: ask questions only and stop.
 
 - Project dossier: stack, goals, constraints, key workflows
 - Search log: tool + query + source domain (only when external search is used). Do not fabricate logs or links.
-  - For Context7, record CLI commands used or mark as unavailable if CLI is not present.
+  - For Context7, record CLI commands used (ctx7 or npx) or mark as unavailable if CLI is not present.
 - Required sources: Context7 (ok/unavailable), skills.sh (ok), GitHub (ok)
 - Inspection notes: per candidate
 - Candidate skills: source + trust tier + inspection notes
