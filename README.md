@@ -18,7 +18,7 @@ This skill follows the Agent Skills format (`SKILL.md` with YAML frontmatter) an
 ## What it does
 - Scans a project and builds a concise dossier (stack, workflows, constraints).
 - Asks clarifying questions and trust tier preferences before any external search.
-- Requests permission to browse only if the client does not already indicate permission is granted.
+- Does **not** ask about browsing if the client already has browsing enabled; only asks if browsing is explicitly disabled/denied.
 - If required inputs are missing, asks questions only and does not present candidates or recommendations.
 - When external browsing is permitted and available, requires a concise search log and inspection notes before recommendations.
 - Recommendations are based on **external skills only**; local skills are listed for overlap awareness and never included in the stack.

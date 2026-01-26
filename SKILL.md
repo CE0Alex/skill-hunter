@@ -13,9 +13,14 @@ Analyze the repo and user goals to assemble a minimal, justified skill stack. Pr
 
 - Goals and priority tasks
 - Trust policy / tiers to target (official-only vs allow maintained vs allow community)
-- Permission to browse external sources (determine from client config/session; ask only if unclear or denied)
 
-If any required input is missing, ask for it and stop. Do not list candidates or recommendations until the user answers or explicitly waives questions. If the client already indicates browsing is allowed, treat permission as granted and do not ask.
+If any required input is missing, ask for it and stop. Do not list candidates or recommendations until the user answers or explicitly waives questions.
+
+## Internal checks (do not ask the user unless blocked)
+
+- Determine whether external browsing is available and allowed from the client config/tooling.
+- If the client exposes a web/browse tool and there is no explicit “do not browse” instruction, treat browsing as granted and proceed without asking.
+- Only ask the user about browsing if the client clearly indicates browsing is disabled or permission is explicitly denied.
 
 ## Workflow
 
@@ -32,13 +37,12 @@ If any required input is missing, ask for it and stop. Do not list candidates or
 - Do not ask which agent is in use; assume the current client.
 - Proceed to Step 3 only after answers **or** an explicit user waiver such as “skip questions, assume defaults.”
 - If the user waives questions, record the assumptions and state them in your response.
-- Ask for permission to browse only if the client does not already indicate permission is granted.
 - Ask which trust tiers to target (official-only, maintained, community) if not provided.
 - Do not present candidate lists or recommendations in this step.
 
 ### 3) Discover candidate skills (evidence-based)
 - Do not browse until required inputs are confirmed.
-- If browsing permission is denied or the client has no external search capability, skip external search and limit discovery to local skills; state the limitation clearly and stop.
+- If browsing is disabled or the client has no external search capability, skip external search and limit discovery to local skills; state the limitation clearly and stop.
 - Search skill registries and sources using the client’s external search/browse capability (if available).
 - If permission is granted and capability exists, you must perform external discovery and include a concise search log in the response.
 
