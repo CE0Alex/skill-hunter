@@ -4,7 +4,7 @@ description: Use when asked to analyze a project/codebase to recommend a skill s
 license: MIT
 metadata:
   author: CE0Alex
-  version: "1.1.0"
+  version: "1.0.4"
   short-description: Analyze a repo and recommend or install a best-fit skill stack.
   argument-hint: <repo-root|path|url>
 ---
@@ -14,26 +14,6 @@ metadata:
 ## Overview
 
 Analyze the repo and user goals to assemble a minimal, justified skill stack. Prefer official sources, inspect every candidate, and install only after user confirmation using agent-specific locations.
-
-## Agent Tool Reference
-
-Different agents have different tools. Use this mapping to translate instructions to your available tools:
-
-| Task | Claude Code | Codex CLI |
-|------|-------------|-----------|
-| **Web search** | `WebSearch` tool | `web.run` tool |
-| **Fetch URL content** | `WebFetch` tool | `web.run` (open page) |
-| **Find files by pattern** | `Glob` tool | `functions.exec_command` with `find` or `rg --files` |
-| **Search file contents** | `Grep` tool | `functions.exec_command` with `rg -n` or `grep` |
-| **Read files** | `Read` tool | `functions.exec_command` with `cat` or direct file access |
-| **Run shell commands** | `Bash` tool | `functions.exec_command` tool |
-| **Edit files** | `Edit` or `Write` tool | `functions.apply_patch` tool |
-| **Ask user questions** | `AskUserQuestion` tool | `functions.request_user_input` tool |
-| **Run tasks in parallel** | `Task` tool (subagents) | `multi_tool_use.parallel` or `functions.spawn_agent` |
-
-**Detecting your agent**: If you have a `WebSearch` tool, you are likely Claude Code. If you have `web.run` and `functions.exec_command` as your primary tools, you are likely Codex CLI.
-
-> Tool mappings verified: Claude Code 2.1.19, Codex CLI 0.91.0 (2025-01-26)
 
 ## Inputs
 
@@ -50,9 +30,7 @@ Different agents have different tools. Use this mapping to translate instruction
 - Confirm project root; ask if unclear.
 - Scan repo and subdirectories until the scope is unambiguous.
 - Read key docs: `AGENTS.md`, `README*`, `docs/`, `CHANGELOG*`, `package.json`, `pyproject.toml`, `requirements*`, `go.mod`, `Cargo.toml`, `pom.xml`, `Makefile`, CI configs, infra/IaC files.
-- Find domain keywords, APIs, and workflows:
-  - **Claude Code**: Use `Glob` to find files, `Grep` to search contents, `Read` to inspect files.
-  - **Codex CLI**: Use `functions.exec_command` with `rg --files` to list files and `rg -n <pattern>` to search contents.
+- Find domain keywords, APIs, and workflows using your agent's file discovery and content search tools.
 - Summarize: domain, stack, critical workflows, tools, constraints, and risks.
 
 ### 2) Ask clarifying questions
@@ -60,9 +38,7 @@ Different agents have different tools. Use this mapping to translate instruction
 - If user intent is already clear, proceed without extra questions.
 
 ### 3) Discover candidate skills (evidence-based)
-Search skill registries and sources:
-- **Claude Code**: Use `WebSearch` to query skill registries (context7.com, skills.sh, GitHub). Use `WebFetch` to retrieve specific pages.
-- **Codex CLI**: Use `web.run` tool to search and browse skill registries. Can also use `functions.exec_command` with `curl` for known URLs.
+Search skill registries and sources using your agent's web search/browse tools.
 
 Search targets:
 - context7.com (skills tab)
@@ -97,12 +73,12 @@ Inspection checklist:
 - If a skill is hosted on GitHub, use the installer with a project-level destination:
   - `python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py --repo owner/repo --path path/to/skill --dest ./.codex/skills`
   - Or: `--url https://github.com/owner/repo/tree/<ref>/path/to/skill`
-- If not on GitHub, use `functions.exec_command` to clone/download and place the skill under `./.codex/skills/`.
+- If not on GitHub, use your shell tool to clone/download and place the skill under `./.codex/skills/`.
 
 **Claude Code (CLI)**
 - Project-level: `<repo>/.claude/skills/<skill-name>/`
 - Personal (global): `~/.claude/skills/<skill-name>/`
-- Use `Bash` tool to clone repos or download files, then place SKILL.md in the appropriate directory.
+- Use your shell tool to clone repos or download files, then place the skill folder in the appropriate directory.
 - No ZIP packaging needed for CLI usage.
 
 **Claude (Web/Desktop)**
