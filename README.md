@@ -39,6 +39,7 @@ Note: `allowed-tools` frontmatter is supported only in Claude Code.
 
 ### Claude (web/desktop)
 Upload the skill as a ZIP via Settings > Capabilities.
+Requires Skills and Code Execution to be enabled (org admins may need to enable it first).
 
 ### Codex (example)
 Project-level path under the repo root:
