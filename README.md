@@ -26,12 +26,13 @@ This skill follows the Agent Skills format (`SKILL.md` with YAML frontmatter) an
 - Does **not** ask about browsing if the client already has browsing enabled; only asks if browsing is explicitly disabled/denied.
 - If required inputs are missing, asks questions only and does not present candidates or recommendations.
 - When external browsing is permitted and available, requires a concise search log and inspection notes before recommendations.
+- Uses `npx skills find <query>` as the preferred skills.sh discovery path (falls back to skills.sh web only if CLI is unavailable).
 - Recommendations are based on **external skills only**; local skills are listed for overlap awareness and never included in the stack.
 - If the user only wants guidance on already-installed/local skills, Skill Hunter should not run; ask if they want external discovery.
 - Recommendations include a confidence rating (High/Medium/Low) with a brief rationale; Low-confidence skills are listed separately as Experimental/Unverified.
 - Requires explicit waiver phrase (e.g., “skip questions, assume defaults”) to proceed without answers.
 - Context7 discovery requires the Context7 CLI (`ctx7`) or `npx -y ctx7`; if neither is available, the search log must mark Context7 as unavailable.
-- skills.sh discovery must use the homepage leaderboard.
+- skills.sh discovery can use `npx skills find <query>` (preferred) or the homepage leaderboard.
 - skills.sh must also open at least one relevant skill detail page (or explicitly state none were relevant).
 - Category focus is requested up front; users can pick any number or say “all.” Includes an **Other** option for custom categories.
 - Verifies installs after confirmation (checks paths, reads SKILL.md, and summarizes installed skills).
@@ -41,6 +42,7 @@ This skill follows the Agent Skills format (`SKILL.md` with YAML frontmatter) an
 - Prefers official or trusted sources and flags unproven skills as optional.
 - States assumptions when the user explicitly waives questions.
 - Recommends a minimal stack and installs only after confirmation.
+ - Notes required installs/dependencies and any security/data‑access risks per recommended skill.
 
 ## When to use
 - "Find the best skills for this project"
@@ -103,6 +105,16 @@ $skill-installer install the skill-hunter skill from owner/repo-name
 ```
 
 > **Note:** Restart Codex after installing new skills to register them.
+
+## Repo Structure
+```
+skill-hunter/
+├── SKILL.md                 # Core workflow + rules
+├── README.md                # This file
+├── AGENTS.md                # Contributor/agent workflow guide
+├── references/installation.md  # Install guidance (load only after user confirms)
+└── LICENSE
+```
 
 ## Usage (example)
 "Please use Skill Hunter to find the best skills to work on this project."

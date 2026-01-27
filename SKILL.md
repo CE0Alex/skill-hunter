@@ -43,6 +43,7 @@ If any required input is missing, ask for it and stop. Do not list candidates or
 - Determine whether external browsing is available and allowed from the client config/tooling.
 - If the client exposes a web/browse tool and there is no explicit “do not browse” instruction, treat browsing as granted and proceed without asking.
 - Only ask the user about browsing if the client clearly indicates browsing is disabled or permission is explicitly denied.
+- If `npx skills` is available, use it as the primary skills.sh discovery path.
 
 ## Workflow
 
@@ -79,13 +80,14 @@ If any required input is missing, ask for it and stop. Do not list candidates or
 
 Search targets:
 - Context7 registry (use CLI search; see below)
-- skills.sh (homepage leaderboard + relevant skill detail pages)
+- skills.sh via `npx skills find <query>` (preferred) or homepage leaderboard + detail pages
 - GitHub search: `SKILL.md in:path <technology>`
+- Optional: official vendor `.well-known/skills` endpoints (if the project vendor publishes them)
 
 Prefer official/trusted sources: skills created/maintained by the tool or company that owns the tech in the codebase. If a registry is unavailable, say so and fall back to GitHub search or the vendor's official docs.
 
 Hard gates:
-- Skills.sh must be searched via the homepage leaderboard.
+- Skills.sh must be searched via `npx skills find <query>` or the homepage leaderboard.
 - Context7 must be attempted via CLI search (`ctx7 skills search ...` or `npx -y ctx7 skills search ...`).
 - GitHub search should be performed for relevant technologies.
 - If a source is unavailable, log the failure, mark it **unavailable** in the search log, and proceed.
@@ -102,7 +104,7 @@ Search matrix requirement:
 - For each selected category, run at least one query per source (Context7, skills.sh, GitHub) unless that source is unavailable.
 - Do not “sample” a few skills; cover each category × source. If the search budget is large, ask the user to cap it (default: 1 query per category per source).
 - Reuse the same query terms across sources when possible to keep coverage consistent.
-- For skills.sh, use the homepage leaderboard plus `site:skills.sh <term>` web search to find relevant detail pages.
+- For skills.sh, use `npx skills find <term>` or the homepage leaderboard plus `site:skills.sh <term>` web search to find relevant detail pages.
 
 ### 4) Inspect each candidate (no assumptions)
 Inspection checklist:
@@ -112,6 +114,7 @@ Inspection checklist:
 - Check activity signals (recent commits/releases, issues health).
 - Confirm compatibility with the target agent (current client).
 - Assess confidence (High/Medium/Low) using evidence you can verify: trust tier, recency/activity, documentation quality, project fit, and overlap. Do not invent install counts.
+- Note required installs and security/data-access risks (network, secrets, write operations, privileged tooling).
 
 Minimum evidence:
 - If external browsing is permitted and available, inspect at least 3 external candidates (or all found, whichever is smaller).
@@ -134,28 +137,7 @@ Minimum evidence:
 
 ### 7) Confirm and install (agent-aware)
 - Only install after the user confirms their chosen stack.
-
-**Codex CLI**
-- Install to `<repo>/.codex/skills/<skill-name>/` by default.
-- If a skill is hosted on GitHub, use the built-in `$skill-installer` skill within Codex:
-  - `$skill-installer install https://github.com/owner/repo/tree/main/path/to/skill`
-  - Or describe what to install: `$skill-installer install the <skill-name> skill from owner/repo`
-- For manual installation, use your shell tool to clone/download and place the skill folder under `./.codex/skills/`.
-- Note: Restart Codex after installing new skills to register them.
-
-**Claude Code (CLI)**
-- Project-level (recommended): `<repo>/.claude/skills/<skill-name>/`
-- Personal (global): `~/.claude/skills/<skill-name>/`
-- Use `git clone` for GitHub-hosted skills, or download and copy the skill folder to the appropriate directory.
-- No ZIP packaging needed for CLI usage.
-
-**Claude (Web/Desktop)**
-- Package the skill folder as a ZIP.
-- Upload via Settings > Capabilities (requires Skills and Code Execution enabled).
-
-**Other clients**
-- Ask for the official project-level skills path or CLI for that client.
-- If no official guidance exists, present a best-effort option and mark it as unverified.
+- For install steps by agent and CLI options, read `references/installation.md` **after** user confirmation.
 
 ### 8) Verify installation
 After installing skills:
@@ -188,6 +170,7 @@ If required inputs are missing: ask questions only and stop.
 - Overlap analysis: what each skill covers and conflicts
 - Recommendations (external only): primary stack + optional variants, each with confidence + rationale
 - Experimental / Unverified: Low-confidence skills with explicit caveats (optional)
+- Requirements & Risks: required installs/dependencies and any security/data-access risks per recommended skill
 - Checklist: Discovery ☐ Inspection ☐ Overlap ☐ Recommendation
 - Assumptions (if any)
 - Next step: confirm install target
