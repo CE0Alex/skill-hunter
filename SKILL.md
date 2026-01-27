@@ -67,6 +67,7 @@ If any required input is missing, ask for it and stop. Do not list candidates or
     - Data & Documents (ETL, DBs, CSV/XLSX/PDF/DOCX/PPTX)
     - Quality & Safety (testing, debugging, security, performance, reliability)
     - Tooling & Automation (browser use, scraping, agent tools, workflow automation)
+    - Planning & Orchestration (planning, strategy, task management, logging, subagents)
     - Other (user-defined): ___
 - Do not present candidate lists or recommendations in this step.
 
@@ -105,6 +106,11 @@ Search matrix requirement:
 - Do not “sample” a few skills; cover each category × source. If the search budget is large, ask the user to cap it (default: 1 query per category per source).
 - Reuse the same query terms across sources when possible to keep coverage consistent.
 - For skills.sh, use `npx skills find <term>` or the homepage leaderboard plus `site:skills.sh <term>` web search to find relevant detail pages.
+
+Search tips (concise):
+- Use specific keywords (e.g., “react testing” beats “testing”).
+- Try synonyms (deploy/deployment, ci-cd, automation/workflow).
+- Check popular sources when relevant (e.g., official vendor skills).
 
 ### 4) Inspect each candidate (no assumptions)
 Inspection checklist:
