@@ -59,8 +59,14 @@ Required frontmatter fields:
 - `name` (unique identifier; lowercase + hyphens)
 - `description` (when to use the skill)
 
-Optional:
-- `metadata.internal: true` to hide from normal discovery (only visible when internal skills are enabled)
+Spec highlights (Agent Skills):
+- `name`: max 64 chars; lowercase letters, numbers, hyphens; must not start/end with a hyphen.
+- `description`: max 1024 chars; non‑empty; describe what the skill does and when to use it.
+- Optional frontmatter fields commonly used: `license`, `metadata`, `compatibility`, `allowed-tools`.
+- Optional directories: `scripts/`, `references/`, `assets/` (include them when copying a skill).
+
+Optional (Skills CLI‑specific):
+- `metadata.internal: true` hides the skill from default discovery; only visible when internal skills are enabled.
 
 ## Skill Discovery Locations (Skills CLI)
 

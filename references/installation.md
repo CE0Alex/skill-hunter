@@ -14,6 +14,23 @@ Notes:
 - If a user wants project-level only, use the agent’s project skills path instead.
 - If the skill did **not** come from Skills CLI discovery, use a source-verified install method instead (see below).
 
+## Skills CLI essentials (skills.sh)
+Use these only for skills discoverable via Skills CLI (skills.sh).
+
+```bash
+# Search
+npx skills find typescript
+
+# List skills in a repo
+npx skills add owner/repo --list
+
+# Install specific skills
+npx skills add owner/repo --skill skill-a --skill skill-b -a codex -y
+
+# Install to global scope
+npx skills add owner/repo --skill skill-a -g -a claude-code -y
+```
+
 ## Context7-sourced skills
 If a skill came from Context7, follow Context7’s install guidance or CLI output. Do not use `npx skills add` unless the skill is also listed by Skills CLI.
 
