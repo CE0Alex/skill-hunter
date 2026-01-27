@@ -17,6 +17,37 @@ Notes:
 ## Context7-sourced skills
 If a skill came from Context7, follow Context7’s install guidance or CLI output. Do not use `npx skills add` unless the skill is also listed by Skills CLI.
 
+Context7 CLI basics (from official docs):
+```bash
+# Install the CLI (optional) or run via npx
+npm install -g ctx7
+npx ctx7 skills search pdf
+
+# Install skills from a project
+ctx7 skills install /anthropics/skills
+ctx7 skills install /anthropics/skills pdf
+ctx7 skills install /anthropics/skills pdf commit
+
+# Target a specific client
+ctx7 skills install /anthropics/skills pdf --cursor
+ctx7 skills install /anthropics/skills pdf --claude
+
+# Install globally (home directory)
+ctx7 skills install /anthropics/skills pdf --global
+
+# List installed skills
+ctx7 skills list
+ctx7 skills list --claude
+ctx7 skills list --cursor
+ctx7 skills list --global
+
+# Show info / remove
+ctx7 skills info /anthropics/skills
+ctx7 skills remove pdf
+ctx7 skills remove pdf --claude
+ctx7 skills remove pdf --global
+```
+
 ## Codex CLI
 Project-level path:
 ```
