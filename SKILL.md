@@ -141,6 +141,7 @@ Minimum evidence:
 - For install steps by agent and CLI options, read `references/installation.md` **after** user confirmation.
 - Use the install method verified during inspection. Do not default to `npx skills add` unless the skill is sourced from a Skills CLI-supported repo/listing.
 - If a skill lacks a verified install method, do **not** attempt to hand-write or reconstruct it. Ask the user for an authoritative source or mark it unverified.
+- If manual copying is required and the skill source is verified, read `references/agent-skills.md` for agent-specific paths, skill format, and discovery locations. Copy the exact skill folder and all bundled files (`scripts/`, `references/`, `assets/`) from the source.
 
 ### 8) Verify installation
 After installing skills:

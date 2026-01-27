@@ -69,3 +69,5 @@ Ask for the official project-level skills path or CLI. If no official guidance e
 
 ## Fallback (only if verified)
 If install methods are unclear, **do not** hand-write or reconstruct a skill. Ask for an authoritative source (official repo, ZIP, or Skills CLI listing) and only install from that source.
+
+If you must manually copy a verified skill, consult `references/agent-skills.md` for agent-specific paths, skill format, and discovery locations.

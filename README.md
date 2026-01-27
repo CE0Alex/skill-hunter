@@ -51,6 +51,7 @@ Reference: https://github.com/vercel-labs/skills (agents registry in `src/agents
 - Notes required installs/dependencies and any security/data‑access risks per recommended skill.
 - Requires a **per-skill install method** verified during inspection; does not default to `npx skills add` unless the skill is from Skills CLI discovery.
 - If a skill lacks a verified install method, it is marked unverified and not installed.
+- If manual copying is required, it uses the verified source and the agent-specific paths in `references/agent-skills.md` (no reconstruction).
 
 ## When to use
 - "Find the best skills for this project"
@@ -121,6 +122,7 @@ skill-hunter/
 ├── README.md                # This file
 ├── AGENTS.md                # Contributor/agent workflow guide
 ├── references/installation.md  # Install guidance (load only after user confirms)
+├── references/agent-skills.md   # Agent paths + skill format + discovery locations
 └── LICENSE
 ```
 
@@ -132,6 +134,7 @@ skill-hunter/
 skill-hunter/
 ├── SKILL.md      # The skill definition
 ├── README.md     # This file
+├── references/agent-skills.md   # Agent paths + skill format + discovery locations
 └── LICENSE       # MIT license
 ```
 
