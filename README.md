@@ -13,6 +13,11 @@ This skill follows the Agent Skills format (`SKILL.md` with YAML frontmatter) an
 | Codex CLI | 0.91.0 | ✅ Supported |
 | Claude (Web/Desktop) | — | ✅ Supported (ZIP upload) |
 
+### Supported agents (via Skills CLI registry)
+Skill Hunter does not hardcode a supported‑agent list to avoid drift. The canonical list is maintained by the Skills CLI registry. If an agent isn’t in the registry, installation support is unverified.
+
+Reference: https://github.com/vercel-labs/skills (agents registry in `src/agents.ts`)
+
 > Last verified: 2026-01-27
 >
 > Installation method verification based on:
@@ -22,6 +27,7 @@ This skill follows the Agent Skills format (`SKILL.md` with YAML frontmatter) an
 
 ## What it does
 - Scans a project and builds a concise dossier (stack, workflows, constraints).
+- Avoids sensitive files like `.env` during repo analysis.
 - Asks clarifying questions and trust tier preferences before any external search.
 - Does **not** ask about browsing if the client already has browsing enabled; only asks if browsing is explicitly disabled/denied.
 - If required inputs are missing, asks questions only and does not present candidates or recommendations.
@@ -35,6 +41,7 @@ This skill follows the Agent Skills format (`SKILL.md` with YAML frontmatter) an
 - skills.sh discovery can use `npx skills find <query>` (preferred) or the homepage leaderboard.
 - skills.sh must also open at least one relevant skill detail page (or explicitly state none were relevant).
 - Category focus is requested up front; users can pick any number or say “all.” Includes an **Other** option for custom categories.
+- Clarifying questions use **multi‑select choices** with an **Other** free‑text option and allow “use defaults.”
 - Verifies installs after confirmation (checks paths, reads SKILL.md, and summarizes installed skills).
 - Requires a search matrix across selected categories × sources (Context7, skills.sh, GitHub) unless a source is unavailable.
 - External candidates that match already-installed local skills are treated as already installed and excluded from recommendations.

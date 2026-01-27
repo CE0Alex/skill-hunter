@@ -46,6 +46,7 @@ If any required input is missing, ask for it and stop. Do not list candidates or
 ### 1) Build a project dossier
 - Confirm project root; ask if unclear.
 - Scan repo and subdirectories until the scope is unambiguous.
+- Do not open sensitive files such as `.env`, private keys, or secrets files.
 - Read key docs: `AGENTS.md`, `README*`, `docs/`, `CHANGELOG*`, `package.json`, `pyproject.toml`, `requirements*`, `go.mod`, `Cargo.toml`, `pom.xml`, `Makefile`, CI configs, infra/IaC files.
 - Find domain keywords, APIs, and workflows using your agent's file discovery and content search tools.
 - Summarize: domain, stack, critical workflows, tools, constraints, and risks.
@@ -57,15 +58,17 @@ If any required input is missing, ask for it and stop. Do not list candidates or
 - Proceed to Step 3 only after answers **or** an explicit user waiver such as “skip questions, assume defaults.”
 - Do **not** treat “obvious” goals as a waiver; the waiver must be explicit.
 - If the user waives questions, record the assumptions and state them in your response.
-- Ask which trust tiers to target (official-only, maintained, community) if not provided.
-- Ask which categories to prioritize (user may pick any number):
-  - Product, UX & Content (frameworks, UI/a11y, design, SEO, copywriting)
-  - DevOps & Delivery (deploy, CI/CD, hosting, environment setup)
-  - Integrations & SaaS APIs (payments, CRM, auth, analytics)
-  - Data & Documents (ETL, DBs, CSV/XLSX/PDF/DOCX/PPTX)
-  - Quality & Safety (testing, debugging, security, performance, reliability)
-  - Tooling & Automation (browser use, scraping, agent tools, workflow automation)
-  - Other (user-defined)
+- Ask questions in **multiple‑choice, multi‑select** format with an **Other** option for custom text. Provide defaults based on the project dossier and allow “use defaults” as a one‑line answer.
+  - **Goals (pick any):** Reliability/quality, UX/design, Integrations, Automation, Documentation, Performance, Other: ___
+  - **Trust tiers (pick any):** Official‑only, Maintained, Community, Other: ___
+  - **Categories (pick any):**
+    - Product, UX & Content (frameworks, UI/a11y, design, SEO, copywriting)
+    - DevOps & Delivery (deploy, CI/CD, hosting, environment setup)
+    - Integrations & SaaS APIs (payments, CRM, auth, analytics)
+    - Data & Documents (ETL, DBs, CSV/XLSX/PDF/DOCX/PPTX)
+    - Quality & Safety (testing, debugging, security, performance, reliability)
+    - Tooling & Automation (browser use, scraping, agent tools, workflow automation)
+    - Other (user-defined): ___
 - Do not present candidate lists or recommendations in this step.
 
 ### 3) Discover candidate skills (evidence-based)
@@ -130,6 +133,7 @@ Minimum evidence:
 - For each skill, include purpose, source, trust tier, overlap notes, and a confidence rating (High/Medium/Low) with a 1–2 sentence rationale.
 - Do not include Low-confidence skills in the primary stack. List them separately under **Experimental / Unverified** with explicit caveats.
 - If steps 3–5 were not completed when external browsing is permitted, respond with **blocked: external discovery not completed** and list what is missing.
+ - End with a **selection prompt** (multi‑choice) asking which stack to install at the **project level**. Allow “none” and custom text.
 
 ### 7) Confirm and install (agent-aware)
 - Only install after the user confirms their chosen stack.
@@ -169,4 +173,4 @@ If required inputs are missing: ask questions only and stop.
 - Requirements & Risks: required installs/dependencies and any security/data-access risks per recommended skill
 - Checklist: Discovery ☐ Inspection ☐ Overlap ☐ Recommendation
 - Assumptions (if any)
-- Next step: confirm install target
+- Next step: multi‑choice selection of stack to install (project‑level)
