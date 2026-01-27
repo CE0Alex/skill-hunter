@@ -26,10 +26,6 @@ Analyze the repo and user goals to assemble a minimal, justified skill stack. Pr
 - "Explain what this installed skill does"
 - Requests limited to already-installed/local skills with no external discovery
 
-## Scope check (before required inputs)
-
-If the user is asking only about already-installed/local skills, do **not** run Skill Hunter. Ask whether they want external skill discovery; if not, answer directly without invoking the workflow.
-
 ## Required inputs (confirm before external search)
 
 - Goals and priority tasks

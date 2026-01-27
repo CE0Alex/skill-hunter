@@ -28,7 +28,7 @@ This skill follows the Agent Skills format (`SKILL.md` with YAML frontmatter) an
 - When external browsing is permitted and available, requires a concise search log and inspection notes before recommendations.
 - Uses `npx skills find <query>` as the preferred skills.sh discovery path (falls back to skills.sh web only if CLI is unavailable).
 - Recommendations are based on **external skills only**; local skills are listed for overlap awareness and never included in the stack.
-- If the user only wants guidance on already-installed/local skills, Skill Hunter should not run; ask if they want external discovery.
+- If the user only wants guidance on already-installed/local skills, Skill Hunter should not run.
 - Recommendations include a confidence rating (High/Medium/Low) with a brief rationale; Low-confidence skills are listed separately as Experimental/Unverified.
 - Requires explicit waiver phrase (e.g., “skip questions, assume defaults”) to proceed without answers.
 - Context7 discovery requires the Context7 CLI (`ctx7`) or `npx -y ctx7`; if neither is available, the search log must mark Context7 as unavailable.
