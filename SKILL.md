@@ -108,6 +108,7 @@ Search matrix requirement:
 Inspection checklist:
 - Open SKILL.md and read frontmatter and body.
 - Verify maintainer, license, and install method.
+- Confirm the install path is actually supported by the source (Skills CLI vs repo vs package).
 - Scan scripts/references for required tools and dependencies.
 - Check activity signals (recent commits/releases, issues health).
 - Confirm compatibility with the target agent (current client).
@@ -130,6 +131,7 @@ Minimum evidence:
 - Recommendations must be **external skills only**. Local skills can be mentioned as context but must never be included in the stack.
 - If there is no clear single best choice, provide 2-3 variants with tradeoffs (coverage vs risk vs maintenance).
 - For each skill, include purpose, source, trust tier, overlap notes, and a confidence rating (High/Medium/Low) with a 1–2 sentence rationale.
+- Include the **install method per skill** (Skills CLI, Codex skill-installer, git clone, package upload, or vendor-specific).
 - Do not include Low-confidence skills in the primary stack. List them separately under **Experimental / Unverified** with explicit caveats.
 - If steps 3–5 were not completed when external browsing is permitted, respond with **blocked: external discovery not completed** and list what is missing.
  - End with a **selection prompt** (multi‑choice) asking which stack to install at the **project level**. Allow “none” and custom text.
@@ -137,6 +139,8 @@ Minimum evidence:
 ### 7) Confirm and install (agent-aware)
 - Only install after the user confirms their chosen stack.
 - For install steps by agent and CLI options, read `references/installation.md` **after** user confirmation.
+- Use the install method verified during inspection. Do not default to `npx skills add` unless the skill is sourced from a Skills CLI-supported repo/listing.
+- If a skill lacks a verified install method, do **not** attempt to hand-write or reconstruct it. Ask the user for an authoritative source or mark it unverified.
 
 ### 8) Verify installation
 After installing skills:
@@ -170,6 +174,7 @@ If required inputs are missing: ask questions only and stop.
 - Recommendations (external only): primary stack + optional variants, each with confidence + rationale
 - Experimental / Unverified: Low-confidence skills with explicit caveats (optional)
 - Requirements & Risks: required installs/dependencies and any security/data-access risks per recommended skill
+- Install method per skill (explicit)
 - Checklist: Discovery ☐ Inspection ☐ Overlap ☐ Recommendation
 - Assumptions (if any)
 - Next step: multi‑choice selection of stack to install (project‑level)

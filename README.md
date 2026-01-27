@@ -48,7 +48,9 @@ Reference: https://github.com/vercel-labs/skills (agents registry in `src/agents
 - Prefers official or trusted sources and flags unproven skills as optional.
 - States assumptions when the user explicitly waives questions.
 - Recommends a minimal stack and installs only after confirmation.
- - Notes required installs/dependencies and any security/data‑access risks per recommended skill.
+- Notes required installs/dependencies and any security/data‑access risks per recommended skill.
+- Requires a **per-skill install method** verified during inspection; does not default to `npx skills add` unless the skill is from Skills CLI discovery.
+- If a skill lacks a verified install method, it is marked unverified and not installed.
 
 ## When to use
 - "Find the best skills for this project"
