@@ -103,6 +103,12 @@ The Skills CLI looks for skills in these locations in a repo:
 
 If no skills are found in standard locations, a recursive search is performed.
 
+## Multi‑skill repos and shared files
+
+- If the source repo contains multiple skills **or** you are installing a specific skill by name, list available skills first (Skills CLI `--list` or the repo’s `skills/` index) and install only the selected skill.
+- Manual copy fallback applies **only** when the user explicitly requests a skill from that repo and the exact files can be verified.
+- Copy the **entire** skill folder plus any shared files explicitly referenced in the skill’s docs. If shared dependencies are unclear, stop and request authoritative install guidance.
+
 ## Compatibility
 
 Skills follow the Agent Skills specification, but some features can be agent‑specific. This table reflects feature support reported by the Skills CLI ecosystem at time of writing:
