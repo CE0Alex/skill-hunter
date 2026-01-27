@@ -24,8 +24,6 @@ cp -R /path/to/skill-hunter ~/.claude/skills/skill-hunter
 - Keep **SKILL.md** focused on discovery and decision rules; move heavy install details to `references/installation.md`.
 - Preserve “external-only recommendations” and search-matrix requirements.
 - Always update `README.md` when modifying workflow or install guidance.
-- Do **not** hardcode usernames, personal paths, or private repo names in docs or examples; use placeholders like `owner/repo` and `<repo>/`.
-- For Codex install guidance, use the built-in `$skill-installer` (do not reference internal Python scripts).
 
 ## Quick Verification
 - Confirm `SKILL.md` still uses only `name` and `description` in YAML frontmatter.
