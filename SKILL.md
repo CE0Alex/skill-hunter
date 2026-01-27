@@ -46,7 +46,6 @@ If any required input is missing, ask for it and stop. Do not list candidates or
 ### 1) Build a project dossier
 - Confirm project root; ask if unclear.
 - Scan repo and subdirectories until the scope is unambiguous.
-- Do not open sensitive files such as `.env`, private keys, or secrets files.
 - Read key docs: `AGENTS.md`, `README*`, `docs/`, `CHANGELOG*`, `package.json`, `pyproject.toml`, `requirements*`, `go.mod`, `Cargo.toml`, `pom.xml`, `Makefile`, CI configs, infra/IaC files.
 - Find domain keywords, APIs, and workflows using your agent's file discovery and content search tools.
 - Summarize: domain, stack, critical workflows, tools, constraints, and risks.

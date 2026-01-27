@@ -27,7 +27,6 @@ Reference: https://github.com/vercel-labs/skills (agents registry in `src/agents
 
 ## What it does
 - Scans a project and builds a concise dossier (stack, workflows, constraints).
-- Avoids sensitive files like `.env` during repo analysis.
 - Asks clarifying questions and trust tier preferences before any external search.
 - Does **not** ask about browsing if the client already has browsing enabled; only asks if browsing is explicitly disabled/denied.
 - If required inputs are missing, asks questions only and does not present candidates or recommendations.
