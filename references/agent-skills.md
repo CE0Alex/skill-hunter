@@ -103,9 +103,16 @@ The Skills CLI looks for skills in these locations in a repo:
 
 If no skills are found in standard locations, a recursive search is performed.
 
-## Compatibility Notes
+## Compatibility
 
-Skills follow the Agent Skills specification, but some features can be agent‑specific (for example: `allowed-tools`, `context: fork`, or hooks). If a skill uses agent‑specific features, prefer installation only on compatible agents or document the limitation.
+Skills follow the Agent Skills specification, but some features can be agent‑specific. This table reflects feature support reported by the Skills CLI ecosystem at time of writing:
+
+| Feature         | OpenCode | OpenHands | Claude Code | Cline | CodeBuddy | Codex | Command Code | Kiro CLI | Cursor | Antigravity | Roo Code | GitHub Copilot | Amp | Clawdbot | Neovate | Pi | Qoder | Zencoder |
+| --------------- | -------- | --------- | ----------- | ----- | --------- | ----- | ------------ | -------- | ------ | ----------- | -------- | -------------- | --- | -------- | ------- | -- | ----- | -------- |
+| Basic skills    | Yes      | Yes       | Yes         | Yes   | Yes       | Yes   | Yes          | Yes      | Yes    | Yes         | Yes      | Yes            | Yes | Yes      | Yes     | Yes | Yes   | Yes      |
+| `allowed-tools` | Yes      | Yes       | Yes         | Yes   | Yes       | Yes   | Yes          | No       | Yes    | Yes         | Yes      | Yes            | Yes | Yes      | Yes     | Yes | Yes   | No       |
+| `context: fork` | No       | No        | Yes         | No    | No        | No    | No           | No       | No     | No          | No       | No             | No  | No       | No      | No | No    | No       |
+| Hooks           | No       | No        | Yes         | Yes   | No        | No    | No           | No       | No     | No          | No       | No             | No  | No       | No      | No | No    | No       |
 
 ## Troubleshooting
 
@@ -118,6 +125,35 @@ Skills follow the Agent Skills specification, but some features can be agent‑s
 - `INSTALL_INTERNAL_SKILLS=1` to show/install skills marked `metadata.internal: true`
 - `DISABLE_TELEMETRY=1` or `DO_NOT_TRACK=1` to disable telemetry (if supported by CLI)
 
+## Telemetry
+
+The Skills CLI may collect anonymous usage data to improve the tool. Telemetry is typically disabled in CI environments.
+
 ## Related Links
 
 Prefer official docs for the current agent and the Agent Skills spec when available.
+
+- Agent Skills Specification: https://agentskills.io
+- Skills Directory: https://skills.sh
+- Amp Skills Documentation: https://ampcode.com/manual#agent-skills
+- Antigravity Skills Documentation: https://antigravity.google/docs/skills
+- Factory AI / Droid Skills Documentation: https://docs.factory.ai/cli/configuration/skills
+- Claude Code Skills Documentation: https://code.claude.com/docs/en/skills
+- Clawdbot Skills Documentation: https://docs.clawd.bot/tools/skills
+- Cline Skills Documentation: https://docs.cline.bot/features/skills
+- CodeBuddy Skills Documentation: https://www.codebuddy.ai/docs/ide/Features/Skills
+- Codex Skills Documentation: https://developers.openai.com/codex/skills
+- Command Code Skills Documentation: https://commandcode.ai/docs/skills
+- Crush Skills Documentation: https://github.com/charmbracelet/crush?tab=readme-ov-file#agent-skills
+- Cursor Skills Documentation: https://cursor.com/docs/context/skills
+- Gemini CLI Skills Documentation: https://geminicli.com/docs/cli/skills/
+- GitHub Copilot Agent Skills: https://docs.github.com/en/copilot/concepts/agents/about-agent-skills
+- Kiro CLI Skills Documentation: https://kiro.dev/docs/cli/custom-agents/configuration-reference/#skill-resources
+- OpenCode Skills Documentation: https://opencode.ai/docs/skills
+- Qwen Code Skills Documentation: https://qwenlm.github.io/qwen-code-docs/en/users/features/skills/
+- OpenHands Skills Documentation: https://docs.openhands.ai/modules/usage/how-to/using-skills
+- Pi Skills Documentation: https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/skills.md
+- Qoder Skills Documentation: https://docs.qoder.com/cli/Skills
+- Roo Code Skills Documentation: https://docs.roocode.com/features/skills
+- Trae Skills Documentation: https://docs.trae.ai/ide/skills
+- Vercel Agent Skills Repository: https://github.com/vercel-labs/agent-skills
