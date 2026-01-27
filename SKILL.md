@@ -91,7 +91,7 @@ Hard gates:
 - If a source is unavailable, log the failure, mark it **unavailable** in the search log, and proceed.
 - Block only if all sources fail or if required sources were skipped without a stated reason.
 - Do not list candidates unless required sources were searched or you explicitly state why they were unavailable.
-- For skills.sh, open at least one relevant skill detail page (or explicitly state that none were relevant).
+- For each source, open at least one relevant skill detail page or repo entry (or explicitly state none were relevant).
 
 Context7 CLI guidance:
 - Prefer `ctx7 skills search "<query>"` if installed.
@@ -106,7 +106,7 @@ Search matrix requirement:
 
 ### 4) Inspect each candidate (no assumptions)
 Inspection checklist:
-- Open SKILL.md and read frontmatter and body.
+- Open SKILL.md from the source and read frontmatter and body.
 - Verify maintainer, license, and install method.
 - Confirm the install path is actually supported by the source (Skills CLI vs repo vs package).
 - Scan scripts/references for required tools and dependencies.
@@ -118,6 +118,7 @@ Inspection checklist:
 Minimum evidence:
 - If external browsing is permitted and available, inspect at least 3 external candidates (or all found, whichever is smaller).
 - If no external candidates exist after exhaustive search, return **blocked: insufficient external candidates** and list the searches performed.
+- If a candidate’s SKILL.md cannot be opened from the source, mark it **unverified** and exclude it from primary recommendations.
 
 ### 5) Evaluate quality and overlap
 - Rate trust tier: Official / Maintained / Community.
