@@ -13,7 +13,12 @@ This skill follows the Agent Skills format (`SKILL.md` with YAML frontmatter) an
 | Codex CLI | 0.91.0 | ✅ Supported |
 | Claude (Web/Desktop) | — | ✅ Supported (ZIP upload) |
 
-> Last verified: 2026-01-26
+> Last verified: 2026-01-27
+>
+> Installation method verification based on:
+> - [OpenAI Codex Skills Documentation](https://developers.openai.com/codex/skills/)
+> - [OpenAI Skills GitHub Repository](https://github.com/openai/skills) (Codex CLI v0.91.0)
+> - [Claude Code Skills Documentation](https://code.claude.com/docs/en/skills) (Claude Code CLI v2.1.19)
 
 ## What it does
 - Scans a project and builds a concise dossier (stack, workflows, constraints).
@@ -51,18 +56,27 @@ If you are unsure where your client expects skills, check its documentation for 
 
 ### Claude Code (CLI)
 Claude Code discovers skills from:
+- **Project-level** (recommended): `.claude/skills/<skill-name>/` (in the project root)
 - **Personal (global)**: `~/.claude/skills/<skill-name>/`
-- **Project-level**: `.claude/skills/<skill-name>/` (in the project root)
 - Plugin skills: bundled with installed plugins
 
 ```bash
-# Global install (available in all projects)
-mkdir -p ~/.claude/skills
-cp -R skill-hunter ~/.claude/skills/
-
-# Or project-level install
+# Project-level install (recommended)
 mkdir -p .claude/skills
 cp -R skill-hunter .claude/skills/
+
+# Or global install (available in all projects)
+mkdir -p ~/.claude/skills
+cp -R skill-hunter ~/.claude/skills/
+```
+
+Or install directly from GitHub:
+```bash
+# Project-level from GitHub
+mkdir -p .claude/skills && git clone https://github.com/owner/repo-name.git .claude/skills/skill-name
+
+# Global from GitHub
+mkdir -p ~/.claude/skills && git clone https://github.com/owner/repo-name.git ~/.claude/skills/skill-name
 ```
 
 Note: `allowed-tools` frontmatter is supported only in Claude Code.
@@ -78,11 +92,17 @@ mkdir -p .codex/skills
 cp -R skill-hunter .codex/skills/
 ```
 
-Or use the skill installer if available:
-```bash
-python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
-  --repo CE0Alex/skill-hunter --dest ./.codex/skills
+Or use the built-in `$skill-installer` skill within Codex:
 ```
+$skill-installer install https://github.com/owner/repo-name/tree/main/skill-name
+```
+
+You can also describe what to install:
+```
+$skill-installer install the skill-hunter skill from owner/repo-name
+```
+
+> **Note:** Restart Codex after installing new skills to register them.
 
 ## Usage (example)
 "Please use Skill Hunter to find the best skills to work on this project."

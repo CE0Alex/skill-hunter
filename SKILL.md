@@ -137,15 +137,16 @@ Minimum evidence:
 
 **Codex CLI**
 - Install to `<repo>/.codex/skills/<skill-name>/` by default.
-- If a skill is hosted on GitHub, use the installer with a project-level destination:
-  - `python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py --repo owner/repo --path path/to/skill --dest ./.codex/skills`
-  - Or: `--url https://github.com/owner/repo/tree/<ref>/path/to/skill`
-- If not on GitHub, use your shell tool to clone/download and place the skill under `./.codex/skills/`.
+- If a skill is hosted on GitHub, use the built-in `$skill-installer` skill within Codex:
+  - `$skill-installer install https://github.com/owner/repo/tree/main/path/to/skill`
+  - Or describe what to install: `$skill-installer install the <skill-name> skill from owner/repo`
+- For manual installation, use your shell tool to clone/download and place the skill folder under `./.codex/skills/`.
+- Note: Restart Codex after installing new skills to register them.
 
 **Claude Code (CLI)**
-- Project-level: `<repo>/.claude/skills/<skill-name>/`
+- Project-level (recommended): `<repo>/.claude/skills/<skill-name>/`
 - Personal (global): `~/.claude/skills/<skill-name>/`
-- Use your shell tool to clone repos or download files, then place the skill folder in the appropriate directory.
+- Use `git clone` for GitHub-hosted skills, or download and copy the skill folder to the appropriate directory.
 - No ZIP packaging needed for CLI usage.
 
 **Claude (Web/Desktop)**
