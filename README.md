@@ -18,7 +18,7 @@ This skill follows the Agent Skills format (`SKILL.md` with YAML frontmatter) an
 > Installation method verification based on:
 > - [OpenAI Codex Skills Documentation](https://developers.openai.com/codex/skills/)
 > - [OpenAI Skills GitHub Repository](https://github.com/openai/skills) (Codex CLI v0.91.0)
-> - Claude Code CLI v2.1.19 documentation
+> - [Claude Code Skills Documentation](https://code.claude.com/docs/en/skills) (Claude Code CLI v2.1.19)
 
 ## What it does
 - Scans a project and builds a concise dossier (stack, workflows, constraints).
@@ -56,18 +56,27 @@ If you are unsure where your client expects skills, check its documentation for 
 
 ### Claude Code (CLI)
 Claude Code discovers skills from:
+- **Project-level** (recommended): `.claude/skills/<skill-name>/` (in the project root)
 - **Personal (global)**: `~/.claude/skills/<skill-name>/`
-- **Project-level**: `.claude/skills/<skill-name>/` (in the project root)
 - Plugin skills: bundled with installed plugins
 
 ```bash
-# Global install (available in all projects)
-mkdir -p ~/.claude/skills
-cp -R skill-hunter ~/.claude/skills/
-
-# Or project-level install
+# Project-level install (recommended)
 mkdir -p .claude/skills
 cp -R skill-hunter .claude/skills/
+
+# Or global install (available in all projects)
+mkdir -p ~/.claude/skills
+cp -R skill-hunter ~/.claude/skills/
+```
+
+Or install directly from GitHub:
+```bash
+# Project-level from GitHub
+mkdir -p .claude/skills && git clone https://github.com/owner/repo-name.git .claude/skills/skill-name
+
+# Global from GitHub
+mkdir -p ~/.claude/skills && git clone https://github.com/owner/repo-name.git ~/.claude/skills/skill-name
 ```
 
 Note: `allowed-tools` frontmatter is supported only in Claude Code.

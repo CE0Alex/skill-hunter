@@ -144,9 +144,9 @@ Minimum evidence:
 - Note: Restart Codex after installing new skills to register them.
 
 **Claude Code (CLI)**
-- Project-level: `<repo>/.claude/skills/<skill-name>/`
+- Project-level (recommended): `<repo>/.claude/skills/<skill-name>/`
 - Personal (global): `~/.claude/skills/<skill-name>/`
-- Use your shell tool to clone repos or download files, then place the skill folder in the appropriate directory.
+- Use `git clone` for GitHub-hosted skills, or download and copy the skill folder to the appropriate directory.
 - No ZIP packaging needed for CLI usage.
 
 **Claude (Web/Desktop)**
