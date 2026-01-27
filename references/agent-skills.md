@@ -40,6 +40,8 @@ Skills can be installed to these agents. Paths shown are project‑level and glo
 
 > If the current agent isn’t listed, installation support is unverified. Ask for official guidance or use the agent’s documented project‑level skills path.
 
+Note: Gemini CLI uses the Skills CLI agent id `gemini-cli` and installs to `.gemini/skills/` at the project level.
+
 ## Creating / Formatting Skills
 
 Skills are directories containing a `SKILL.md` file with YAML frontmatter:

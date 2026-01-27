@@ -54,6 +54,7 @@ Reference: https://github.com/vercel-labs/skills (agents registry in `src/agents
 - If a skill lacks a verified install method, it is marked unverified and not installed.
 - If manual copying is required, it uses the verified source and the agent-specific paths in `references/agent-skills.md` (no reconstruction).
 - Requires each candidate’s `SKILL.md` to be opened from the source; if not possible, the candidate is marked unverified and excluded from primary recommendations.
+- Defaults install target to the **current agent only**; only offers agent selection when the user explicitly asks.
 
 ## When to use
 - "Find the best skills for this project"

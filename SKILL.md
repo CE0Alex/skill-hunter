@@ -148,6 +148,9 @@ Minimum evidence:
 ### 7) Confirm and install (agent-aware)
 - Only install after the user confirms their chosen stack.
 - For install steps by agent and CLI options, read `references/installation.md` **after** user confirmation.
+- Default install target is the **current agent only**. Do not present an agent list unless the user explicitly requests a different agent or multi‑agent install.
+- If the user specifies a different agent, install **only** for that agent (no auto‑detect, no extra agents).
+- If the Skills CLI does not list the current agent, **do not proceed with CLI**. Use the agent‑specific project‑level path from `references/agent-skills.md` instead.
 - Use the install method verified during inspection. Do not default to `npx skills add` unless the skill is sourced from a Skills CLI-supported repo/listing.
 - If a skill lacks a **verified install method for the current agent** (even if a source repo exists), do **not** attempt to hand-write or reconstruct it. Ask for authoritative install guidance or mark it unverified.
 - If manual copying is required and the skill source is verified, read `references/agent-skills.md` for agent-specific paths, skill format, and discovery locations. Copy the exact skill folder and all bundled files (`scripts/`, `references/`, `assets/`) from the source.

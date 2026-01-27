@@ -6,13 +6,14 @@ Use this reference only **after** the user confirms the stack.
 Use the Skills CLI only when the skill is known to be supported by it (e.g., discovered via `npx skills find` or listed on skills.sh). Do **not** default to Skills CLI for arbitrary repos.
 
 ```bash
-npx skills add owner/repo --skill skill-name -a codex -a claude-code -y
+npx skills add owner/repo --skill skill-name -a <current-agent> -y
 ```
 
 Notes:
 - `-a` targets agents; use `--all` to install to all detected agents.
 - If a user wants project-level only, use the agent’s project skills path instead.
 - If the skill did **not** come from Skills CLI discovery, use a source-verified install method instead (see below).
+- Do **not** rely on auto‑detect when installing. Always pass `-a <current-agent>` unless the user explicitly asks for multi‑agent installs.
 
 ## Skills CLI essentials (skills.sh)
 Use these only for skills discoverable via Skills CLI (skills.sh).
@@ -25,10 +26,10 @@ npx skills find typescript
 npx skills add owner/repo --list
 
 # Install specific skills
-npx skills add owner/repo --skill skill-a --skill skill-b -a codex -y
+npx skills add owner/repo --skill skill-a --skill skill-b -a <current-agent> -y
 
 # Install to global scope
-npx skills add owner/repo --skill skill-a -g -a claude-code -y
+npx skills add owner/repo --skill skill-a -g -a <current-agent> -y
 ```
 
 ## Context7-sourced skills
