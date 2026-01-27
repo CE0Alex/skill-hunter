@@ -82,6 +82,8 @@ Search targets:
 - GitHub search: `SKILL.md in:path <technology>`
 - Optional: official vendor `.well-known/skills` endpoints (if the project vendor publishes them)
 
+Prioritize Context7 and skills.sh via their official tools. Use direct GitHub searches as a secondary source for gaps or high‑value skills not found via registries.
+
 Prefer official/trusted sources: skills created/maintained by the tool or company that owns the tech in the codebase. If a registry is unavailable, say so and fall back to GitHub search or the vendor's official docs.
 
 Hard gates:

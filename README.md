@@ -32,6 +32,7 @@ Reference: https://github.com/vercel-labs/skills (agents registry in `src/agents
 - If required inputs are missing, asks questions only and does not present candidates or recommendations.
 - When external browsing is permitted and available, requires a concise search log and inspection notes before recommendations.
 - Uses `npx skills find <query>` as the preferred skills.sh discovery path (falls back to skills.sh web only if CLI is unavailable).
+- Prioritizes Context7 + skills.sh registries; GitHub search is secondary but still used to catch high‑value gaps.
 - Recommendations are based on **external skills only**; local skills are listed for overlap awareness and never included in the stack.
 - If the user only wants guidance on already-installed/local skills, Skill Hunter should not run.
 - Recommendations include a confidence rating (High/Medium/Low) with a brief rationale; Low-confidence skills are listed separately as Experimental/Unverified.
