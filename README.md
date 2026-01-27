@@ -13,7 +13,12 @@ This skill follows the Agent Skills format (`SKILL.md` with YAML frontmatter) an
 | Codex CLI | 0.91.0 | ✅ Supported |
 | Claude (Web/Desktop) | — | ✅ Supported (ZIP upload) |
 
-> Last verified: 2026-01-26
+> Last verified: 2026-01-27
+>
+> Installation method verification based on:
+> - [OpenAI Codex Skills Documentation](https://developers.openai.com/codex/skills/)
+> - [OpenAI Skills GitHub Repository](https://github.com/openai/skills) (Codex CLI v0.91.0)
+> - Claude Code CLI v2.1.19 documentation
 
 ## What it does
 - Scans a project and builds a concise dossier (stack, workflows, constraints).
@@ -78,11 +83,17 @@ mkdir -p .codex/skills
 cp -R skill-hunter .codex/skills/
 ```
 
-Or use the skill installer if available:
-```bash
-python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
-  --repo CE0Alex/skill-hunter --dest ./.codex/skills
+Or use the built-in `$skill-installer` skill within Codex:
 ```
+$skill-installer install https://github.com/owner/repo-name/tree/main/skill-name
+```
+
+You can also describe what to install:
+```
+$skill-installer install the skill-hunter skill from owner/repo-name
+```
+
+> **Note:** Restart Codex after installing new skills to register them.
 
 ## Usage (example)
 "Please use Skill Hunter to find the best skills to work on this project."
