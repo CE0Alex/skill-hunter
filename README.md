@@ -156,6 +156,11 @@ For the complete workflow, see [SKILL.md](SKILL.md).
 | `references/installation.md` | Agent reference: CLI commands for installing discovered skills |
 | `references/agent-skills.md` | Agent reference: paths, formats, and supported agents |
 
+## Changelog
+
+- **v1.0.21** — Adopt clarified README structure, add explicit repo reference in Quick Install, and link detailed CLI safety rules from references.
+- **v1.0.20** — Align with latest Skills CLI guidance (source formats, options, maintenance commands) and expand supported agents/discovery locations.
+
 ## License
 
 MIT
