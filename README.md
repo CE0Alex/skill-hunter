@@ -1,5 +1,7 @@
 # Skill Hunter
 
+[![GitHub](https://img.shields.io/badge/GitHub-CE0Alex%2Fskill--hunter-blue)](https://github.com/CE0Alex/skill-hunter)
+
 An agent skill that analyzes your project and recommends a curated stack of **external skills** from trusted registries.
 
 ## What It Does
@@ -42,45 +44,74 @@ Skill Hunter supports 50+ agents via the [Skills CLI registry](https://github.co
 
 These instructions are for installing **Skill Hunter itself** as a skill in your agent. Once installed, you can invoke Skill Hunter to discover and install other skills for your project.
 
-### Generic (Any Skills-Enabled Agent)
+### Quick Install (Skills CLI)
 
-Copy the entire `skill-hunter/` folder to your agent's project-level skills directory, or upload it as a ZIP if your agent uses a UI-based import.
+If your agent supports the [Skills CLI](https://skills.sh):
 
-If you're unsure where your agent expects skills, check [references/agent-skills.md](references/agent-skills.md) for the full list of agent paths, or consult your agent's documentation.
+```bash
+npx skills add CE0Alex/skill-hunter --skill skill-hunter -a <your-agent> -y
+```
+
+Replace `<your-agent>` with your agent name (e.g., `claude-code`, `codex`, `cursor`). See [references/agent-skills.md](references/agent-skills.md) for the full list of supported agent names.
 
 ### Claude Code (CLI)
 
+**From GitHub (recommended):**
 ```bash
-# Project-level (recommended)
-mkdir -p .claude/skills
-cp -R skill-hunter .claude/skills/
+# Project-level
+mkdir -p .claude/skills && git clone https://github.com/CE0Alex/skill-hunter.git .claude/skills/skill-hunter
 
 # Or global (available in all projects)
-mkdir -p ~/.claude/skills
-cp -R skill-hunter ~/.claude/skills/
+mkdir -p ~/.claude/skills && git clone https://github.com/CE0Alex/skill-hunter.git ~/.claude/skills/skill-hunter
+```
+
+**Manual copy (if you already have the files):**
+```bash
+mkdir -p .claude/skills
+cp -R skill-hunter .claude/skills/
 ```
 
 ### Codex CLI
 
+**From GitHub:**
 ```bash
-mkdir -p .codex/skills
-cp -R skill-hunter .codex/skills/
+mkdir -p .codex/skills && git clone https://github.com/CE0Alex/skill-hunter.git .codex/skills/skill-hunter
 ```
 
-Or use the built-in skill installer:
+**Using the built-in skill installer:**
 ```
-$skill-installer install the skill-hunter skill from owner/repo-name
+$skill-installer install the skill-hunter skill from CE0Alex/skill-hunter
 ```
 
 > **Note:** Restart Codex after installing new skills.
 
 ### Claude (Web/Desktop)
 
-Upload the skill as a ZIP via **Settings > Capabilities**. Skills and Code Execution must be enabled.
+1. Download or clone this repository
+2. Create a ZIP file containing the `skill-hunter` folder (include all files: `SKILL.md`, `README.md`, `references/`, etc.)
+3. In Claude, go to **Settings > Capabilities**
+4. Upload the ZIP file
+
+> Skills and Code Execution must be enabled (org admins may need to enable this).
 
 ### Other Agents
 
-See [references/agent-skills.md](references/agent-skills.md) for paths and installation methods for 50+ supported agents.
+For Cursor, Windsurf, Cline, and 40+ other agents, see [references/agent-skills.md](references/agent-skills.md) for paths. The general pattern is:
+
+```bash
+mkdir -p .<agent>/skills && git clone https://github.com/CE0Alex/skill-hunter.git .<agent>/skills/skill-hunter
+```
+
+### Verifying Installation
+
+After installing, ask your agent:
+> "What skills do you have available?"
+
+or
+
+> "Do you have the Skill Hunter skill?"
+
+If installed correctly, the agent should recognize Skill Hunter and describe what it does.
 
 ---
 
@@ -95,6 +126,21 @@ Once Skill Hunter is installed and you invoke it, it uses these tools to find an
 | GitHub search | Fallback for gaps not in registries |
 
 Skill Hunter handles the installation commands automatically after you confirm the recommended stack. For the full CLI reference used internally, see [references/installation.md](references/installation.md).
+
+## Example Usage
+
+Once installed, invoke Skill Hunter with a prompt like:
+
+> "Find the best skills for this project"
+
+Skill Hunter will:
+1. Analyze your codebase
+2. Ask about your goals and preferences
+3. Search skill registries (Context7, skills.sh, GitHub)
+4. Present a recommended stack with confidence ratings
+5. Install your chosen skills after confirmation
+
+For the complete workflow, see [SKILL.md](SKILL.md).
 
 ## Repo Structure
 
