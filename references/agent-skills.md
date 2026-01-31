@@ -8,10 +8,11 @@ Skills can be installed to these agents. Paths shown are project‑level and glo
 
 | Agent | `--agent` | Project Path | Global Path |
 |-------|-----------|--------------|-------------|
-| Amp | `amp` | `.agents/skills/` | `~/.config/agents/skills/` |
+| Amp, Kimi Code CLI | `amp`, `kimi-cli` | `.agents/skills/` | `~/.config/agents/skills/` |
 | Antigravity | `antigravity` | `.agent/skills/` | `~/.gemini/antigravity/global_skills/` |
+| Augment | `augment` | `.augment/rules/` | `~/.augment/rules/` |
 | Claude Code | `claude-code` | `.claude/skills/` | `~/.claude/skills/` |
-| Clawdbot | `clawdbot` | `skills/` | `~/.clawdbot/skills/` |
+| OpenClaw | `openclaw` | `skills/` | `~/.moltbot/skills/` |
 | Cline | `cline` | `.cline/skills/` | `~/.cline/skills/` |
 | CodeBuddy | `codebuddy` | `.codebuddy/skills/` | `~/.codebuddy/skills/` |
 | Codex | `codex` | `.codex/skills/` | `~/.codex/skills/` |
@@ -23,22 +24,39 @@ Skills can be installed to these agents. Paths shown are project‑level and glo
 | Gemini CLI | `gemini-cli` | `.gemini/skills/` | `~/.gemini/skills/` |
 | GitHub Copilot | `github-copilot` | `.github/skills/` | `~/.copilot/skills/` |
 | Goose | `goose` | `.goose/skills/` | `~/.config/goose/skills/` |
+| Junie | `junie` | `.junie/skills/` | `~/.junie/skills/` |
+| iFlow CLI | `iflow-cli` | `.iflow/skills/` | `~/.iflow/skills/` |
 | Kilo Code | `kilo` | `.kilocode/skills/` | `~/.kilocode/skills/` |
 | Kiro CLI | `kiro-cli` | `.kiro/skills/` | `~/.kiro/skills/` |
+| Kode | `kode` | `.kode/skills/` | `~/.kode/skills/` |
 | MCPJam | `mcpjam` | `.mcpjam/skills/` | `~/.mcpjam/skills/` |
+| Mistral Vibe | `mistral-vibe` | `.vibe/skills/` | `~/.vibe/skills/` |
 | Mux | `mux` | `.mux/skills/` | `~/.mux/skills/` |
 | OpenCode | `opencode` | `.opencode/skills/` | `~/.config/opencode/skills/` |
+| OpenClaude IDE | `openclaude` | `.openclaude/skills/` | `~/.openclaude/skills/` |
 | OpenHands | `openhands` | `.openhands/skills/` | `~/.openhands/skills/` |
 | Pi | `pi` | `.pi/skills/` | `~/.pi/agent/skills/` |
 | Qoder | `qoder` | `.qoder/skills/` | `~/.qoder/skills/` |
 | Qwen Code | `qwen-code` | `.qwen/skills/` | `~/.qwen/skills/` |
+| Replit | `replit` | `.agent/skills/` | N/A (project-only) |
 | Roo Code | `roo` | `.roo/skills/` | `~/.roo/skills/` |
 | Trae | `trae` | `.trae/skills/` | `~/.trae/skills/` |
+| Trae CN | `trae-cn` | `.trae/skills/` | `~/.trae-cn/skills/` |
 | Windsurf | `windsurf` | `.windsurf/skills/` | `~/.codeium/windsurf/skills/` |
 | Zencoder | `zencoder` | `.zencoder/skills/` | `~/.zencoder/skills/` |
 | Neovate | `neovate` | `.neovate/skills/` | `~/.neovate/skills/` |
+| Pochi | `pochi` | `.pochi/skills/` | `~/.pochi/skills/` |
+| AdaL | `adal` | `.adal/skills/` | `~/.adal/skills/` |
 
 > If the current agent isn’t listed, installation support is unverified. Ask for official guidance or use the agent’s documented project‑level skills path.
+
+Kiro CLI note:
+After installing skills, add them to your custom agent’s `resources` in `.kiro/agents/<agent>.json`:
+```json
+{
+  "resources": ["skill://.kiro/skills/**/SKILL.md"]
+}
+```
 
 ## Creating / Formatting Skills
 
@@ -79,8 +97,8 @@ The Skills CLI looks for skills in these locations in a repo:
 - `skills/.system/`
 - `.agents/skills/`
 - `.agent/skills/`
+- `.augment/rules/`
 - `.claude/skills/`
-- `skills/`
 - `.cline/skills/`
 - `.codebuddy/skills/`
 - `.codex/skills/`
@@ -92,11 +110,16 @@ The Skills CLI looks for skills in these locations in a repo:
 - `.gemini/skills/`
 - `.github/skills/`
 - `.goose/skills/`
+- `.junie/skills/`
+- `.iflow/skills/`
 - `.kilocode/skills/`
 - `.kiro/skills/`
+- `.kode/skills/`
 - `.mcpjam/skills/`
+- `.vibe/skills/`
 - `.mux/skills/`
 - `.opencode/skills/`
+- `.openclaude/skills/`
 - `.openhands/skills/`
 - `.pi/skills/`
 - `.qoder/skills/`
@@ -106,6 +129,8 @@ The Skills CLI looks for skills in these locations in a repo:
 - `.windsurf/skills/`
 - `.zencoder/skills/`
 - `.neovate/skills/`
+- `.pochi/skills/`
+- `.adal/skills/`
 
 If no skills are found in standard locations, a recursive search is performed.
 
@@ -160,12 +185,16 @@ Prefer official docs for the current agent and the Agent Skills spec when availa
 - Cursor Skills Documentation: https://cursor.com/docs/context/skills
 - Gemini CLI Skills Documentation: https://geminicli.com/docs/cli/skills/
 - GitHub Copilot Agent Skills: https://docs.github.com/en/copilot/concepts/agents/about-agent-skills
+- iFlow CLI Skills Documentation: https://platform.iflow.cn/en/cli/examples/skill
+- Kimi Code CLI Skills Documentation: https://moonshotai.github.io/kimi-cli/en/customization/skills.html
 - Kiro CLI Skills Documentation: https://kiro.dev/docs/cli/custom-agents/configuration-reference/#skill-resources
+- Kode Skills Documentation: https://github.com/shareAI-lab/kode/blob/main/docs/skills.md
 - OpenCode Skills Documentation: https://opencode.ai/docs/skills
 - Qwen Code Skills Documentation: https://qwenlm.github.io/qwen-code-docs/en/users/features/skills/
 - OpenHands Skills Documentation: https://docs.openhands.ai/modules/usage/how-to/using-skills
 - Pi Skills Documentation: https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/skills.md
 - Qoder Skills Documentation: https://docs.qoder.com/cli/Skills
+- Replit Skills Documentation: https://docs.replit.com/replitai/skills
 - Roo Code Skills Documentation: https://docs.roocode.com/features/skills
 - Trae Skills Documentation: https://docs.trae.ai/ide/skills
 - Vercel Agent Skills Repository: https://github.com/vercel-labs/agent-skills

@@ -14,9 +14,39 @@ Notes:
 - If a user wants project-level only, use the agent’s project skills path instead.
 - If the skill did **not** come from Skills CLI discovery, use a source-verified install method instead (see below).
 - Do **not** rely on auto‑detect when installing. Always pass `-a <current-agent>` unless the user explicitly asks for multi‑agent installs.
+- If a skill was not found via `npx skills find`, verify availability with `npx skills add <repo> --list` before installing via Skills CLI.
 
 ## Skills CLI essentials (skills.sh)
 Use these only for skills discoverable via Skills CLI (skills.sh).
+
+Source formats:
+```bash
+# GitHub shorthand (owner/repo)
+npx skills add vercel-labs/agent-skills
+
+# Full GitHub URL
+npx skills add https://github.com/vercel-labs/agent-skills
+
+# Direct path to a skill in a repo
+npx skills add https://github.com/vercel-labs/agent-skills/tree/main/skills/web-design-guidelines
+
+# GitLab URL
+npx skills add https://gitlab.com/org/repo
+
+# Any git URL
+npx skills add git@github.com:vercel-labs/agent-skills.git
+
+# Local path
+npx skills add ./my-local-skills
+```
+
+Key options (verify in `npx skills --help` if unsure):
+- `-g, --global` install to user directory instead of project
+- `-a, --agent <agents...>` target specific agents
+- `-s, --skill <skills...>` install specific skills (use `'*'` for all skills)
+- `-l, --list` list available skills without installing
+- `-y, --yes` skip confirmation prompts
+- `--all` install all skills to all agents without prompts
 
 ```bash
 # Search
@@ -30,7 +60,21 @@ npx skills add owner/repo --skill skill-a --skill skill-b -a <current-agent> -y
 
 # Install to global scope
 npx skills add owner/repo --skill skill-a -g -a <current-agent> -y
+
+# Check for updates / update
+npx skills check
+npx skills update
+
+# Initialize a new skill
+npx skills init my-skill
+
+# Remove skills
+npx skills remove web-design-guidelines
 ```
+
+Installation methods (interactive):
+- **Symlink** (recommended): single source of truth, easier updates
+- **Copy**: use when symlinks are not supported
 
 ## Context7-sourced skills
 If a skill came from Context7, follow Context7’s install guidance or CLI output. Do not use `npx skills add` unless the skill is also listed by Skills CLI.
@@ -65,6 +109,10 @@ ctx7 skills remove pdf
 ctx7 skills remove pdf --claude
 ctx7 skills remove pdf --global
 ```
+
+Context7 scope note:
+- Context7 CLI auto‑detects supported clients and installs to those it recognizes.
+- If the current agent is not supported by Context7, do **not** use ctx7 install; fall back to source‑verified manual install or the agent’s documented path.
 
 ## Codex CLI
 Project-level path:

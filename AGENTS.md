@@ -24,6 +24,7 @@ cp -R /path/to/skill-hunter ~/.claude/skills/skill-hunter
 - Keep **SKILL.md** focused on discovery and decision rules; move heavy install details to `references/installation.md`.
 - Preserve “external-only recommendations” and search-matrix requirements.
 - Always update `README.md` when modifying workflow or install guidance.
+- When the Skills CLI README changes, update `references/agent-skills.md` and `references/installation.md` first.
 
 ## Quick Verification
 - Confirm `SKILL.md` still uses only `name` and `description` in YAML frontmatter.

@@ -106,6 +106,7 @@ Search matrix requirement:
 - Do not “sample” a few skills; cover each category × source. If the search budget is large, ask the user to cap it (default: 1 query per category per source).
 - Reuse the same query terms across sources when possible to keep coverage consistent.
 - For skills.sh, use `npx skills find <term>` or the homepage leaderboard plus `site:skills.sh <term>` web search to find relevant detail pages.
+- If a candidate is not discoverable via `npx skills find`, verify it with `npx skills add <repo> --list` (or equivalent) before treating it as installable via Skills CLI.
 
 Search tips (concise):
 - Use specific keywords (e.g., “react testing” beats “testing”).
@@ -152,6 +153,7 @@ Minimum evidence:
 - If the user specifies a different agent, install **only** for that agent (no auto‑detect, no extra agents).
 - If the Skills CLI does not list the current agent, **do not proceed with CLI**. Use the agent‑specific project‑level path from `references/agent-skills.md` instead.
 - Use the install method verified during inspection. Do not default to `npx skills add` unless the skill is sourced from a Skills CLI-supported repo/listing.
+- If a skill wasn’t found via `npx skills find`, you must verify it with `npx skills add <repo> --list` before installing via Skills CLI.
 - If a skill lacks a **verified install method for the current agent** (even if a source repo exists), do **not** attempt to hand-write or reconstruct it. Ask for authoritative install guidance or mark it unverified.
 - If manual copying is required and the skill source is verified, read `references/agent-skills.md` for agent-specific paths, skill format, and discovery locations. Copy the exact skill folder and all bundled files (`scripts/`, `references/`, `assets/`) from the source.
 - If the source repo has multiple skills or shared files, follow the multi‑skill guidance in `references/agent-skills.md` before copying.

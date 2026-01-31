@@ -16,9 +16,9 @@ This skill follows the Agent Skills format (`SKILL.md` with YAML frontmatter) an
 ### Supported agents (via Skills CLI registry)
 Skill Hunter does not hardcode a supported‑agent list to avoid drift. The canonical list is maintained by the Skills CLI registry. If an agent isn’t in the registry, installation support is unverified.
 
-Reference: https://github.com/vercel-labs/skills (agents registry in `src/agents.ts`)
+Reference: https://github.com/vercel-labs/skills (supported agents + discovery locations)
 
-> Last verified: 2026-01-27
+> Last verified: 2026-01-31
 >
 > Installation method verification based on:
 > - [OpenAI Codex Skills Documentation](https://developers.openai.com/codex/skills/)
@@ -32,6 +32,7 @@ Reference: https://github.com/vercel-labs/skills (agents registry in `src/agents
 - If required inputs are missing, asks questions only and does not present candidates or recommendations.
 - When external browsing is permitted and available, requires a concise search log and inspection notes before recommendations.
 - Uses `npx skills find <query>` as the preferred skills.sh discovery path (falls back to skills.sh web only if CLI is unavailable).
+- If a skill wasn’t found via `npx skills find`, it must be verified with `npx skills add <repo> --list` before installing via Skills CLI.
 - Prioritizes Context7 + skills.sh registries; GitHub search is secondary but still used to catch high‑value gaps.
 - Recommendations are based on **external skills only**; local skills are listed for overlap awareness and never included in the stack.
 - If the user only wants guidance on already-installed/local skills, Skill Hunter should not run.
@@ -51,6 +52,7 @@ Reference: https://github.com/vercel-labs/skills (agents registry in `src/agents
 - Recommends a minimal stack and installs only after confirmation.
 - Notes required installs/dependencies and any security/data‑access risks per recommended skill.
 - Requires a **per-skill install method** verified during inspection; does not default to `npx skills add` unless the skill is from Skills CLI discovery.
+- Includes Skills CLI maintenance paths (`npx skills check` / `npx skills update`).
 - If a skill lacks a verified install method, it is marked unverified and not installed.
 - If manual copying is required, it uses the verified source and the agent-specific paths in `references/agent-skills.md` (no reconstruction).
 - Requires each candidate’s `SKILL.md` to be opened from the source; if not possible, the candidate is marked unverified and excluded from primary recommendations.
@@ -118,6 +120,31 @@ $skill-installer install the skill-hunter skill from owner/repo-name
 
 > **Note:** Restart Codex after installing new skills to register them.
 
+## Skills CLI quick reference (skills.sh)
+
+Source formats:
+```
+npx skills add owner/repo
+npx skills add https://github.com/owner/repo
+npx skills add https://github.com/owner/repo/tree/main/skills/my-skill
+npx skills add git@github.com:owner/repo.git
+npx skills add ./local-skills
+```
+
+Common commands:
+```
+npx skills find typescript
+npx skills add owner/repo --list
+npx skills add owner/repo --skill my-skill -a <agent> -y
+npx skills check
+npx skills update
+npx skills remove my-skill
+```
+
+Interactive install methods:
+- **Symlink** (recommended)
+- **Copy** (use when symlinks are not supported)
+
 ## Repo Structure
 ```
 skill-hunter/
@@ -131,15 +158,6 @@ skill-hunter/
 
 ## Usage (example)
 "Please use Skill Hunter to find the best skills to work on this project."
-
-## Structure
-```
-skill-hunter/
-├── SKILL.md      # The skill definition
-├── README.md     # This file
-├── references/agent-skills.md   # Agent paths + skill format + discovery locations
-└── LICENSE       # MIT license
-```
 
 ## License
 MIT
