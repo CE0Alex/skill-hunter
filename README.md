@@ -54,6 +54,8 @@ npx skills add CE0Alex/skill-hunter --skill skill-hunter -a <your-agent> -y
 
 Replace `<your-agent>` with your agent name (e.g., `claude-code`, `codex`, `cursor`). This command installs **this repo** (`CE0Alex/skill-hunter`) as a skill. See [references/agent-skills.md](references/agent-skills.md) for the full list of supported agent names and paths.
 
+**Recommended for most users.** This installs the complete `skill-hunter` package (including `references/`).
+
 ### Claude Code (CLI)
 
 **From GitHub (recommended):**
