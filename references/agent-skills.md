@@ -38,7 +38,7 @@ Skills can be installed to these agents. Paths shown are project‑level and glo
 | Pi | `pi` | `.pi/skills/` | `~/.pi/agent/skills/` |
 | Qoder | `qoder` | `.qoder/skills/` | `~/.qoder/skills/` |
 | Qwen Code | `qwen-code` | `.qwen/skills/` | `~/.qwen/skills/` |
-| Replit | `replit` | `.agent/skills/` | N/A (project-only) |
+| Replit | `replit` | `.agents/skills/` | N/A (project-only) |
 | Roo Code | `roo` | `.roo/skills/` | `~/.roo/skills/` |
 | Trae | `trae` | `.trae/skills/` | `~/.trae/skills/` |
 | Trae CN | `trae-cn` | `.trae/skills/` | `~/.trae-cn/skills/` |
@@ -151,6 +151,8 @@ Skills follow the Agent Skills specification, but some features can be agent‑s
 | `context: fork` | No       | No        | Yes         | No    | No        | No    | No           | No       | No     | No          | No       | No             | No  | No       | No      | No | No    | No       |
 | Hooks           | No       | No        | Yes         | Yes   | No        | No    | No           | No       | No     | No          | No       | No             | No  | No       | No      | No | No    | No       |
 
+> Agents not listed in this table support basic skills. If an agent's feature support is unknown, assume basic skills only.
+
 ## Troubleshooting
 
 - **No skills found**: ensure `SKILL.md` contains valid YAML frontmatter with `name` and `description`.
@@ -171,10 +173,11 @@ The Skills CLI may collect anonymous usage data to improve the tool. Telemetry i
 Prefer official docs for the current agent and the Agent Skills spec when available.
 
 - Agent Skills Specification: https://agentskills.io
-- Skills Directory: https://skills.sh
+- Skills Directory (skills.sh): https://skills.sh
+- Skills Directory (curated): https://skillsdirectory.com
+- Vercel Agent Skills Repository: https://github.com/vercel-labs/agent-skills
 - Amp Skills Documentation: https://ampcode.com/manual#agent-skills
 - Antigravity Skills Documentation: https://antigravity.google/docs/skills
-- Factory AI / Droid Skills Documentation: https://docs.factory.ai/cli/configuration/skills
 - Claude Code Skills Documentation: https://code.claude.com/docs/en/skills
 - Clawdbot Skills Documentation: https://docs.clawd.bot/tools/skills
 - Cline Skills Documentation: https://docs.cline.bot/features/skills
@@ -183,18 +186,22 @@ Prefer official docs for the current agent and the Agent Skills spec when availa
 - Command Code Skills Documentation: https://commandcode.ai/docs/skills
 - Crush Skills Documentation: https://github.com/charmbracelet/crush?tab=readme-ov-file#agent-skills
 - Cursor Skills Documentation: https://cursor.com/docs/context/skills
+- Factory AI / Droid Skills Documentation: https://docs.factory.ai/cli/configuration/skills
 - Gemini CLI Skills Documentation: https://geminicli.com/docs/cli/skills/
 - GitHub Copilot Agent Skills: https://docs.github.com/en/copilot/concepts/agents/about-agent-skills
+- Goose Skills Documentation: https://block.github.io/goose/docs/guides/context-engineering/using-skills/
 - iFlow CLI Skills Documentation: https://platform.iflow.cn/en/cli/examples/skill
+- Junie Guidelines Documentation: https://www.jetbrains.com/help/junie/customize-guidelines.html
+- Kilo Code Skills Documentation: https://kilo.ai/docs/features/skills
 - Kimi Code CLI Skills Documentation: https://moonshotai.github.io/kimi-cli/en/customization/skills.html
 - Kiro CLI Skills Documentation: https://kiro.dev/docs/cli/custom-agents/configuration-reference/#skill-resources
 - Kode Skills Documentation: https://github.com/shareAI-lab/kode/blob/main/docs/skills.md
+- Mux Skills Documentation: https://cmux.io/
 - OpenCode Skills Documentation: https://opencode.ai/docs/skills
-- Qwen Code Skills Documentation: https://qwenlm.github.io/qwen-code-docs/en/users/features/skills/
 - OpenHands Skills Documentation: https://docs.openhands.ai/modules/usage/how-to/using-skills
 - Pi Skills Documentation: https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/skills.md
 - Qoder Skills Documentation: https://docs.qoder.com/cli/Skills
+- Qwen Code Skills Documentation: https://qwenlm.github.io/qwen-code-docs/en/users/features/skills/
 - Replit Skills Documentation: https://docs.replit.com/replitai/skills
 - Roo Code Skills Documentation: https://docs.roocode.com/features/skills
 - Trae Skills Documentation: https://docs.trae.ai/ide/skills
-- Vercel Agent Skills Repository: https://github.com/vercel-labs/agent-skills

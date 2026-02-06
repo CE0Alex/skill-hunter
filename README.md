@@ -33,12 +33,12 @@ This skill follows the [Agent Skills](https://agentskills.io) format and works w
 ### Tested Agents
 | Agent | Version Tested | Status |
 |-------|----------------|--------|
-| Claude Code (CLI) | 2.1.19 | ✅ Supported |
-| Codex CLI | 0.91.0 | ✅ Supported |
+| Claude Code (CLI) | 2.1.34 | ✅ Supported |
+| Codex CLI | 0.98.0 | ✅ Supported |
 | Claude (Web/Desktop) | — | ✅ Supported (ZIP upload) |
 
 ### Other Agents
-Skill Hunter supports 50+ agents via the [Skills CLI registry](https://github.com/vercel-labs/skills). See [references/agent-skills.md](references/agent-skills.md) for the full list of supported agents and their skill paths.
+Skill Hunter supports 50+ agents via the [Skills CLI](https://github.com/vercel-labs/skills) registry. See [references/agent-skills.md](references/agent-skills.md) for the full list of supported agents and their skill paths.
 
 ## Installing Skill Hunter
 
@@ -98,7 +98,7 @@ $skill-installer install the skill-hunter skill from CE0Alex/skill-hunter
 
 ### Other Agents
 
-For Cursor, Windsurf, Cline, and 40+ other agents, see [references/agent-skills.md](references/agent-skills.md) for paths. The general pattern is:
+For Cursor, Windsurf, Cline, and 50+ other agents, see [references/agent-skills.md](references/agent-skills.md) for paths. The general pattern is:
 
 ```bash
 mkdir -p .<agent>/skills && git clone https://github.com/CE0Alex/skill-hunter.git .<agent>/skills/skill-hunter
@@ -160,8 +160,13 @@ For the complete workflow, see [SKILL.md](SKILL.md).
 
 ## Changelog
 
+- **v1.0.24** — Update tested versions (Claude Code 2.1.34, Codex 0.98.0), add `ctx7 skills suggest` as discovery source, update Skills CLI reference to v1.3.7 features, fix Replit path, add Skills Directory as optional registry, rebuild dist package.
 - **v1.0.21** — Adopt clarified README structure, add explicit repo reference in Quick Install, and link detailed CLI safety rules from references.
 - **v1.0.20** — Align with latest Skills CLI guidance (source formats, options, maintenance commands) and expand supported agents/discovery locations.
+
+## Spec Evolution
+
+The [Agent Skills specification](https://agentskills.io) continues to evolve. Notable proposals under discussion include inter-skill relationships (`prerequisite-skills`, `related-skills`) in [agentskills/agentskills#90](https://github.com/agentskills/agentskills/issues/90). Skill Hunter will adopt new spec features as they are merged.
 
 ## License
 

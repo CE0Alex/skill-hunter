@@ -30,10 +30,11 @@ npx skills add https://github.com/vercel-labs/agent-skills
 # Direct path to a skill in a repo
 npx skills add https://github.com/vercel-labs/agent-skills/tree/main/skills/web-design-guidelines
 
-# GitLab URL
+# GitLab URL (including subgroups)
 npx skills add https://gitlab.com/org/repo
+npx skills add https://gitlab.com/org/subgroup/repo
 
-# Any git URL
+# Any git URL (including custom Git hosts)
 npx skills add git@github.com:vercel-labs/agent-skills.git
 
 # Local path
@@ -42,11 +43,14 @@ npx skills add ./my-local-skills
 
 Key options (verify in `npx skills --help` if unsure):
 - `-g, --global` install to user directory instead of project
-- `-a, --agent <agents...>` target specific agents
+- `-a, --agent <agents...>` target specific agents (supports fuzzy matching)
 - `-s, --skill <skills...>` install specific skills (use `'*'` for all skills)
 - `-l, --list` list available skills without installing
 - `-y, --yes` skip confirmation prompts
 - `--all` install all skills to all agents without prompts
+- `--full-depth` deep directory scanning for repos with nested skills
+
+> **Note:** `npx add-skill` is deprecated. Use `npx skills` for all operations.
 
 ```bash
 # Search
@@ -85,12 +89,16 @@ Context7 CLI basics (from official docs):
 npm install -g ctx7
 npx ctx7 skills search pdf
 
+# Suggest skills based on project dependencies (scans package.json, requirements.txt, pyproject.toml)
+ctx7 skills suggest
+ctx7 skills suggest --claude
+
 # Install skills from a project
 ctx7 skills install /anthropics/skills
 ctx7 skills install /anthropics/skills pdf
 ctx7 skills install /anthropics/skills pdf commit
 
-# Target a specific client
+# Target a specific client (--claude, --cursor, --codex, --opencode, --amp, --antigravity)
 ctx7 skills install /anthropics/skills pdf --cursor
 ctx7 skills install /anthropics/skills pdf --claude
 
